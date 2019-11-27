@@ -78,7 +78,7 @@ class FilterController: UIViewController {
 	//MARK: - Custom variables
 
 	//input data
-	var filterCathedralNames = [String]()
+	//var filterCathedralNames = [String]()
 
 	//output data
 	var filterFacultyValues: [Bool]?
@@ -89,7 +89,9 @@ class FilterController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		debugPrint("filterCathedralNames: \(filterCathedralNames.count)")
+		//filterCathedralNames.append("All Types")
+		//debugPrint("filterCathedralNames: \(filterCathedralNames.count)")
+
     }
 
 	//MARK: - viewWillAppear
@@ -98,3 +100,20 @@ class FilterController: UIViewController {
 }
 
 //MARK: - Extension
+
+
+//MARK: - Extension make filter Names
+extension FilterController {
+	func makeFilterNames() {
+		dayFilterLabel.text = "Day"
+		eveningFilterLabel.text = "Evening"
+		allTypesFilterLabel.text = "All Types"
+		mobDevFilterLabel.text = "Mobile Development"
+		feDevFilterLabel.text = "Front End Development"
+		designFilterLabel.text = "Design"
+		programmingFilterLabel.text = "Programming"
+		qaFilterLabel.text = "QA"
+		otherFilterLabel.text = "Other"
+	}
+}
+

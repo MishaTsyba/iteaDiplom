@@ -29,7 +29,7 @@ class FacultyCell: UICollectionViewCell {
 			shadowView.layer.shadowRadius = 3
 
 			// set the corner radius
-			cellContentView.layer.cornerRadius = 30
+			cellContentView.layer.cornerRadius = 10
 
 			// set the round view for image
 			cellPhotoView.clipsToBounds = true

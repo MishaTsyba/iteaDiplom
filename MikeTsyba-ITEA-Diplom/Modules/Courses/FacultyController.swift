@@ -35,7 +35,7 @@ class FacultyController: UIViewController {
 	//output data
 	var selectedFaculty: Faculty?
 	var allCourses: [Course]?
-	var filterCathedralNames = [String]()
+	//var filterCathedralNames = [String]()
 
 	//transfer data
 	var signedInStudent: Student?
@@ -71,13 +71,13 @@ class FacultyController: UIViewController {
 	
 	@IBAction func didTapFilterButton(_ sender: Any) {
 
-		makeFilterCathedralNames(allCathedrals: self.allCathedrals)
+		//makeFilterCathedralNames(allCathedrals: self.allCathedrals)
 		
-		debugPrint("filterCathedralNames: \(filterCathedralNames)")
+		//debugPrint("filterCathedralNames: \(filterCathedralNames)")
 
 		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
 		let filterController = coursesStoryboard.instantiateViewController(withIdentifier: "FilterController") as! FilterController
-		filterController.filterCathedralNames = self.filterCathedralNames
+		//filterController.filterCathedralNames = self.filterCathedralNames
 		navigationController?.pushViewController(filterController, animated: true)
 	}
 }
@@ -103,17 +103,17 @@ extension FacultyController: UICollectionViewDelegate, UICollectionViewDataSourc
 }
 
 //MARK: - Make Filter Names extension
-extension FacultyController {
-
-	func makeFilterCathedralNames(allCathedrals: [Catehdral]) {
-		for cathedral in allCathedrals {
-			if let filterName = cathedral.name {
-				filterCathedralNames.append(filterName)
-				debugPrint("filterName: \(filterName)")
-			}
-		}
-	}
-}
+//extension FacultyController {
+//
+//	func makeFilterCathedralNames(allCathedrals: [Catehdral]) {
+//		for cathedral in allCathedrals {
+//			if let filterName = cathedral.name {
+//				filterCathedralNames.append(filterName)
+//				debugPrint("filterName: \(filterName)")
+//			}
+//		}
+//	}
+//}
 
 //MARK: - Make Cathedrals extension
 extension FacultyController {
