@@ -15,7 +15,7 @@ class FilterController: UIViewController {
 	//MARK: - Custom variables
 
 	//input data
-	var filterFacultyNames: [String]?
+	var filterCathedralNames = [String]()
 
 	//output data
 	var filterFacultyValues: [Bool]?
@@ -26,7 +26,7 @@ class FilterController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		debugPrint("filterCathedralNames: \(filterCathedralNames.count)")
     }
 
 	//MARK: - viewWillAppear

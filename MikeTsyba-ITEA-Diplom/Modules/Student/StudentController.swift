@@ -16,7 +16,6 @@ class StudentController: UIViewController {
 	var signedInStudent: Student?
 	var currentStudentCourse: Course?
 	var completedStudentCourses: [Course]?
-	var orderedStudentCourses: [Course]?
 
 	//MARK: - viewDidLoad
 

@@ -19,7 +19,6 @@ class Student {
 	var email: String?
 	var password: String?
 	var currentCourse: String?
-	var orderedCourses: [String]?
 	var completedCourses: [String]?
 
 	init(firstName: String?, lastName: String?, age: String?, city: String?, birthday: String?, phone: String?, workPlace: String?, email: String?, password: String?, currentCourse: String?, completedCourses: [String]?) {

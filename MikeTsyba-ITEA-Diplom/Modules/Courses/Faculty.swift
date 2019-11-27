@@ -11,9 +11,11 @@ import Foundation
 class Faculty {
 	var name: String?
 	var cathedral: String?
+	var imageName: String?
 
-	init(name: String?, cathedral: String?) {
+	init(name: String?, cathedral: String?, imageName: String?) {
 		self.name = name
 		self.cathedral = cathedral
+		self.imageName = imageName
 	}
 }
