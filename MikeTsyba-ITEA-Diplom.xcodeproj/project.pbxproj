@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C779C04239048A500C6DB11 /* Student.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C779C03239048A400C6DB11 /* Student.storyboard */; };
 		3CC9EE50238FE79E00AEE613 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC9EE4E238FE79E00AEE613 /* CourseCell.swift */; };
 		3CC9EE51238FE79E00AEE613 /* CourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3CC9EE4F238FE79E00AEE613 /* CourseCell.xib */; };
 		3CCABB32238E87750030B99A /* Courses.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CCABB31238E87750030B99A /* Courses.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C779C03239048A400C6DB11 /* Student.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Student.storyboard; path = "MikeTsyba-ITEA-Diplom/Student.storyboard"; sourceTree = SOURCE_ROOT; };
 		3CC9EE4E238FE79E00AEE613 /* CourseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CourseCell.swift; path = "MikeTsyba-ITEA-Diplom/Modules/Courses/CourseCell.swift"; sourceTree = SOURCE_ROOT; };
 		3CC9EE4F238FE79E00AEE613 /* CourseCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = CourseCell.xib; path = "MikeTsyba-ITEA-Diplom/Modules/Courses/CourseCell.xib"; sourceTree = SOURCE_ROOT; };
 		3CCABB31238E87750030B99A /* Courses.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Courses.storyboard; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				3CF5BAB7238AD34500EDB746 /* Student.swift */,
+				3C779C03239048A400C6DB11 /* Student.storyboard */,
 				3CF5BAC5238AD8D600EDB746 /* StudentController.swift */,
 				3CF5BAC3238AD8B900EDB746 /* StudentCoursesController.swift */,
 			);
@@ -232,6 +235,7 @@
 			files = (
 				3CCABB39238E990D0030B99A /* FacultyCell.xib in Resources */,
 				3CF5BAA6238ABA9100EDB746 /* LaunchScreen.storyboard in Resources */,
+				3C779C04239048A500C6DB11 /* Student.storyboard in Resources */,
 				3CC9EE51238FE79E00AEE613 /* CourseCell.xib in Resources */,
 				3CCABB32238E87750030B99A /* Courses.storyboard in Resources */,
 				3CF5BAA3238ABA9100EDB746 /* Assets.xcassets in Resources */,

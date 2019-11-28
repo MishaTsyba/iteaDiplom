@@ -38,6 +38,12 @@ class CourseDetailesController: UIViewController {
 		designView()
 
 		if let item = course {
+			if let courseName = item.name {
+				titleLabel.text = courseName
+			}
+		}
+
+		if let item = course {
 			if let courseProgram = item.program {
 				programLabel.text = courseProgram
 			}

@@ -64,6 +64,13 @@ class CoursesController: UIViewController {
 		if filteredFacultyCourses.count == 0 {
 			noCoursesAlert()
 		}
+
+		if let faculty = selectedFaculty {
+			if let facultyName = faculty.name {
+				titleViewLabel.text = facultyName
+			}
+		}
+
 		courseTableView.reloadData()
     }
 

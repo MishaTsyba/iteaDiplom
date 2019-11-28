@@ -43,6 +43,12 @@ class CourseController: UIViewController {
         super.viewDidLoad()
 
 		if let item = course {
+			if let courseName = item.name {
+				titleLabel.text = courseName
+			}
+		}
+
+		if let item = course {
 			if let courseDescription = item.description {
 				descriptionLabel.text = courseDescription
 			}

@@ -87,6 +87,13 @@ class FacultyController: UIViewController {
 
 	//MARK: - MyProfile Button Actions
 	@IBAction func didTapMyProfileButton(_ sender: Any) {
+
+		let coursesStoryboard = UIStoryboard(name: "Student", bundle: nil)
+		let studentController = coursesStoryboard.instantiateViewController(withIdentifier: "StudentController") as! StudentController
+
+		studentController.signedInStudent = self.signedInStudent
+		studentController.allCourses = self.allCourses
+		navigationController?.pushViewController(studentController, animated: true)
 	}
 
 	//MARK: - Filter Button Actions
@@ -225,10 +232,10 @@ extension FacultyController {
 		let qaAdvancedCourse = Course(name: "QA Advanced", faculty: "Testing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
 		let qaAutomationCourse = Course(name: "QA Automation", faculty: "Testing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
 
-		let smmCourse = Course(name: "Social Media Marketing", faculty: "Digital Marketing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
+		let smmCourse = Course(name: "SMM", faculty: "Digital Marketing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
 		let emailCourse = Course(name: "Email Marketing", faculty: "Digital Marketing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
 
-		let pmpCourse = Course(name: "Professional Project Management", faculty: "Project Management", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
+		let pmpCourse = Course(name: "Professional PM", faculty: "Project Management", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
 		let agileScrumCourse = Course(name: "Agile/Scrum", faculty: "Project Management", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
 
 		let programmingBasicCourse = Course(name: "Basic Programming", faculty: "Programming", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
