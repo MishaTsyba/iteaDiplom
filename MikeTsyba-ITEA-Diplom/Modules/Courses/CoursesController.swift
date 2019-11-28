@@ -103,6 +103,18 @@ extension CoursesController: UITableViewDelegate, UITableViewDataSource {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
+
+		debugPrint("*********** Courses didSelectRowAt  **************")
+
+		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
+		let courseController = coursesStoryboard.instantiateViewController(withIdentifier: "CourseController") as! CourseController
+
+		courseController.course = filteredFacultyCourses[indexPath.row]
+		courseController.signedInStudent = self.signedInStudent
+
+		debugPrint("course: \(filteredFacultyCourses[indexPath.row])")
+		debugPrint("signedInStudent: \(String(describing: signedInStudent))")
+		navigationController?.pushViewController(courseController, animated: true)
 	}
 
 }
@@ -143,7 +155,6 @@ extension CoursesController {
 		}
 	}
 }
-
 
 extension CoursesController {
 	func designView() {
