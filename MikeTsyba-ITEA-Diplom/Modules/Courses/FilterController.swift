@@ -76,31 +76,265 @@ class FilterController: UIViewController {
 	@IBOutlet weak var otherFilterButton: UIButton!
 
 	//MARK: - Custom variables
-
 	//input data
-	//var filterCathedralNames = [String]()
 
 	//output data
-	var filterFacultyValues: [Bool]?
-	var filterDayCourse = false
-	var filterEveningCourse = false
+	var timeFilterFacultyValues = [String]()
+	var typeFilterFacultyValues = [String]()
+	var savedTimeFilterFacultyValues = [String]()
+	var savedTypeFilterFacultyValues = [String]()
 	
 	//MARK: - viewDidLoad
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		//filterCathedralNames.append("All Types")
-		//debugPrint("filterCathedralNames: \(filterCathedralNames.count)")
-
+		debugPrint("*********** filter viewDidLoad  **************")
+		makeFilterNames()
+		debugPrint("timeFilterFacultyValues: \(timeFilterFacultyValues)")
+		debugPrint("typeFilterFacultyValues: \(typeFilterFacultyValues)")
+		debugPrint("savedTimeFilterFacultyValues: \(savedTimeFilterFacultyValues)")
+		debugPrint("savedTypeFilterFacultyValues: \(savedTypeFilterFacultyValues)")
     }
 
 	//MARK: - viewWillAppear
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		debugPrint("*********** filter viewWillAppear  **************")
+		debugPrint("timeFilterFacultyValues: \(timeFilterFacultyValues)")
+		debugPrint("typeFilterFacultyValues: \(typeFilterFacultyValues)")
+		debugPrint("savedTimeFilterFacultyValues: \(savedTimeFilterFacultyValues)")
+		debugPrint("savedTypeFilterFacultyValues: \(savedTypeFilterFacultyValues)")
+		toggleTimeFilter(timeFilter: savedTimeFilterFacultyValues)
+		toggleTypeFilter(typeFilter: savedTypeFilterFacultyValues)
+    }
 
-	//MARK: - Button Actions
+
+	//MARK: - Day Filter Button Actions
+	@IBAction func didTapDayFilterButton(_ sender: Any) {
+		debugPrint("*********** tap start  **************")
+		timeFilterFacultyValues = []
+		timeFilterFacultyValues.append("Day")
+		debugPrint("*********** tap end  **************")
+		for filter in timeFilterFacultyValues {
+			debugPrint("\(filter)")
+		}
+		debugPrint("\(timeFilterFacultyValues.count)")
+		debugPrint("\(timeFilterFacultyValues)")
+		toggleTimeFilter(timeFilter: timeFilterFacultyValues)
+	}
+	
+	//MARK: - Evening Filter Button Actions
+	@IBAction func didTapEveningFilterButton(_ sender: Any) {
+		debugPrint("*********** tap start  **************")
+		timeFilterFacultyValues = []
+		timeFilterFacultyValues.append("Evening")
+		debugPrint("*********** tap end  **************")
+		for filter in timeFilterFacultyValues {
+			debugPrint("\(filter)")
+		}
+		debugPrint("\(timeFilterFacultyValues.count)")
+		debugPrint("\(timeFilterFacultyValues)")
+		toggleTimeFilter(timeFilter: timeFilterFacultyValues)
+	}
+	
+	//MARK: - Alltypes Filter Button Actions
+	@IBAction func didTapAllTypesFilterButton(_ sender: Any) {
+		debugPrint("*********** tap start  **************")
+		typeFilterFacultyValues = []
+		typeFilterFacultyValues.append("All Types")
+		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
+		debugPrint("*********** tap end  **************")
+		for filter in typeFilterFacultyValues {
+			debugPrint("\(filter)")
+		}
+		debugPrint("\(typeFilterFacultyValues.count)")
+		debugPrint("\(typeFilterFacultyValues)")
+	}
+	
+	//MARK: - Mobile Filter Button Actions
+	@IBAction func didTapMobDevFilterButton(_ sender: Any) {
+		debugPrint("*********** tap start  **************")
+		typeFilterFacultyValues = []
+		typeFilterFacultyValues.append("Mobile Development")
+		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
+		debugPrint("*********** tap end  **************")
+		for filter in typeFilterFacultyValues {
+			debugPrint("\(filter)")
+		}
+		debugPrint("\(typeFilterFacultyValues.count)")
+		debugPrint("\(typeFilterFacultyValues)")
+	}
+	
+	//MARK: - FE Filter Button Actions
+	@IBAction func didTapFeDevFilterButton(_ sender: Any) {
+		debugPrint("*********** tap start  **************")
+		typeFilterFacultyValues = []
+		typeFilterFacultyValues.append("Front End Development")
+		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
+		debugPrint("*********** tap end  **************")
+		for filter in typeFilterFacultyValues {
+			debugPrint("\(filter)")
+		}
+		debugPrint("\(typeFilterFacultyValues.count)")
+		debugPrint("\(typeFilterFacultyValues)")
+	}
+	
+	//MARK: - Design Filter Button Actions
+	@IBAction func didTapDesignFilterButton(_ sender: Any) {
+		debugPrint("*********** tap start  **************")
+		typeFilterFacultyValues = []
+		typeFilterFacultyValues.append("Design")
+		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
+		debugPrint("*********** tap end  **************")
+		for filter in typeFilterFacultyValues {
+			debugPrint("\(filter)")
+		}
+		debugPrint("\(typeFilterFacultyValues.count)")
+		debugPrint("\(typeFilterFacultyValues)")
+	}
+	
+	//MARK: - Programming Filter Button Actions
+	@IBAction func didTapProgrammingFilterButton(_ sender: Any) {
+		debugPrint("*********** tap start  **************")
+		typeFilterFacultyValues = []
+		typeFilterFacultyValues.append("Programming")
+		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
+		debugPrint("*********** tap end  **************")
+		for filter in typeFilterFacultyValues {
+			debugPrint("\(filter)")
+		}
+		debugPrint("\(typeFilterFacultyValues.count)")
+		debugPrint("\(typeFilterFacultyValues)")
+	}
+	
+	//MARK: - QA Filter Button Actions
+	@IBAction func didTapQaFilterButton(_ sender: Any) {
+		debugPrint("*********** tap start  **************")
+		typeFilterFacultyValues = []
+		typeFilterFacultyValues.append("QA")
+		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
+		debugPrint("*********** tap end  **************")
+		for filter in typeFilterFacultyValues {
+			debugPrint("\(filter)")
+		}
+		debugPrint("\(typeFilterFacultyValues.count)")
+		debugPrint("\(typeFilterFacultyValues)")
+	}
+	
+	//MARK: - Other Filter Button Actions
+	@IBAction func didTapOtherFilterButton(_ sender: Any) {
+		debugPrint("*********** tap start  **************")
+		typeFilterFacultyValues = []
+		typeFilterFacultyValues.append("Other")
+		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
+		debugPrint("*********** tap end  **************")
+		for filter in typeFilterFacultyValues {
+			debugPrint("\(filter)")
+		}
+		debugPrint("\(typeFilterFacultyValues.count)")
+		debugPrint("\(typeFilterFacultyValues)")
+	}
+	
+	//MARK: - Back Button Actions
+	@IBAction func didTapBackButton(_ sender: Any) {
+		debugPrint("*********** tap back  **************")
+		let viewControllersOfNavigation = navigationController?.viewControllers
+
+		if let controllers = viewControllersOfNavigation {
+
+			if let facultyController = controllers[0] as? FacultyController {
+				facultyController.timeFilterFacultyValues = self.timeFilterFacultyValues
+				facultyController.typeFilterFacultyValues = self.typeFilterFacultyValues
+				facultyController.savedTimeFilterFacultyValues = self.savedTimeFilterFacultyValues
+				facultyController.savedTypeFilterFacultyValues = self.savedTypeFilterFacultyValues
+				
+				debugPrint("timeFilterFacultyValues: \(timeFilterFacultyValues)")
+				debugPrint("typeFilterFacultyValues: \(typeFilterFacultyValues)")
+				debugPrint("savedTimeFilterFacultyValues: \(savedTimeFilterFacultyValues)")
+				debugPrint("savedTypeFilterFacultyValues: \(savedTypeFilterFacultyValues)")
+				navigationController?.popToViewController(facultyController, animated: true)
+			}
+		}
+	}
+	
+	//MARK: - Save Button Actions
+	@IBAction func didTapSaveButton(_ sender: Any) {
+		debugPrint("*********** tap save  **************")
+		savedTimeFilterFacultyValues = timeFilterFacultyValues
+		savedTypeFilterFacultyValues = typeFilterFacultyValues
+		debugPrint("savedTimeFilterFacultyValues: \(savedTimeFilterFacultyValues)")
+		debugPrint("savedTypeFilterFacultyValues: \(savedTypeFilterFacultyValues)")
+	}
 }
 
-//MARK: - Extension
+//MARK: - tap filter Views Actions Extension
+extension FilterController {
+	func toggleTimeFilter(timeFilter: [String]) {
 
+		if timeFilter.contains("Day") {
+			dayCircleImageView.image = UIImage(named: "checked")
+		} else {
+			dayCircleImageView.image = UIImage(named: "unChecked")
+		}
+
+		if timeFilter.contains("Evening") {
+			eveningCircleImageView.image = UIImage(named: "checked")
+		} else {
+			eveningCircleImageView.image = UIImage(named: "unChecked")
+		}
+	}
+
+	func toggleTypeFilter(typeFilter: [String]) {
+
+		if typeFilter.contains("All Types") {
+			allTypesCircleImageView.image = UIImage(named: "checked")
+		} else {
+			allTypesCircleImageView.image = UIImage(named: "unChecked")
+		}
+
+		if typeFilter.contains("Mobile Development") {
+			mobDevCircleImageView.image = UIImage(named: "checked")
+		} else {
+			mobDevCircleImageView.image = UIImage(named: "unChecked")
+		}
+
+		if typeFilter.contains("Front End Development") {
+			feDevCircleImageView.image = UIImage(named: "checked")
+		} else {
+			feDevCircleImageView.image = UIImage(named: "unChecked")
+		}
+
+		if typeFilter.contains("Design") {
+			designCircleImageView.image = UIImage(named: "checked")
+		} else {
+			designCircleImageView.image = UIImage(named: "unChecked")
+		}
+
+		if typeFilter.contains("Programming") {
+			programmingCircleImageView.image = UIImage(named: "checked")
+		} else {
+			programmingCircleImageView.image = UIImage(named: "unChecked")
+		}
+
+		if typeFilter.contains("QA") {
+			qaCircleImageView.image = UIImage(named: "checked")
+		} else {
+			qaCircleImageView.image = UIImage(named: "unChecked")
+		}
+
+		if typeFilter.contains("Other") {
+			otherCircleImageView.image = UIImage(named: "checked")
+		} else {
+			otherCircleImageView.image = UIImage(named: "unChecked")
+		}
+
+		if typeFilter.contains("All Types") {
+			allTypesCircleImageView.image = UIImage(named: "checked")
+		} else {
+			allTypesCircleImageView.image = UIImage(named: "unChecked")
+		}
+	}
+}
 
 //MARK: - Extension make filter Names
 extension FilterController {
@@ -116,4 +350,3 @@ extension FilterController {
 		otherFilterLabel.text = "Other"
 	}
 }
-

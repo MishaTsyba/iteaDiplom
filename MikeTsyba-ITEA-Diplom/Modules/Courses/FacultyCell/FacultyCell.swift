@@ -34,9 +34,9 @@ class FacultyCell: UICollectionViewCell {
 			// set the round view for image
 			cellPhotoView.clipsToBounds = true
 			cellPhotoView.backgroundColor = UIColor.clear
-		cellPhotoView.layer.shadowColor = UIColor.black.cgColor
-		cellPhotoView.layer.shadowOffset = CGSize(width: 1, height: 1)
-		cellPhotoView.layer.shadowOpacity = 1
+			cellPhotoView.layer.shadowColor = UIColor.black.cgColor
+			cellPhotoView.layer.shadowOffset = CGSize(width: 1, height: 1)
+			cellPhotoView.layer.shadowOpacity = 1
 			cellPhotoView.layer.shadowRadius = 2
 		}
 

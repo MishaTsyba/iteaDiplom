@@ -23,14 +23,17 @@ class FacultyController: UIViewController {
 
 	//MARK: - Custom variables
 	//input data
-	var filterFacultyValues: [Bool]?
+	var timeFilterFacultyValues = [String]()
+	var typeFilterFacultyValues = [String]()
+	var savedTimeFilterFacultyValues = [String]()
+	var savedTypeFilterFacultyValues = [String]()
 
 	//processing data
 	var allCathedrals = [Catehdral]()
 	var allFaculties = [Faculty]()
 
 	//displayed data
-	var filteredFaculties: [Faculty]?
+	var filteredFaculties = [Faculty]()
 
 	//output data
 	var selectedFaculty: Faculty?
@@ -39,13 +42,11 @@ class FacultyController: UIViewController {
 
 	//transfer data
 	var signedInStudent: Student?
-	var filterDayCourse = false
-	var filterEveningCourse = false
 
 	//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		debugPrint("*********** filter viewDidLoad  **************")
 		makeStudent()
 		makeAllCourses()
 		makeAllFaculties()
@@ -62,6 +63,27 @@ class FacultyController: UIViewController {
     }
 
 	//MARK: - viewWillAppear
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(true)
+		debugPrint("*********** filter viewWillAppear  **************")
+		filteredFaculties = []
+		debugPrint("typeFilterFacultyValues: \(typeFilterFacultyValues)")
+
+		if typeFilterFacultyValues.contains("All Types") {
+			filteredFaculties = allFaculties
+		} else {
+			for faculty in allFaculties {
+				if let cathedral = faculty.cathedral {
+					if typeFilterFacultyValues.contains(cathedral) {
+						filteredFaculties.append(faculty)
+					}
+				}
+			}
+		}
+
+		debugPrint("filteredFaculties: \(filteredFaculties.description)")
+		facultyCollectionView.reloadData()
+    }
 
 	//MARK: - MyProfile Button Actions
 	@IBAction func didTapMyProfileButton(_ sender: Any) {
@@ -77,7 +99,11 @@ class FacultyController: UIViewController {
 
 		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
 		let filterController = coursesStoryboard.instantiateViewController(withIdentifier: "FilterController") as! FilterController
-		//filterController.filterCathedralNames = self.filterCathedralNames
+		
+		filterController.timeFilterFacultyValues = self.timeFilterFacultyValues
+		filterController.typeFilterFacultyValues = self.typeFilterFacultyValues
+		filterController.savedTimeFilterFacultyValues = self.savedTimeFilterFacultyValues
+		filterController.savedTypeFilterFacultyValues = self.savedTypeFilterFacultyValues
 		navigationController?.pushViewController(filterController, animated: true)
 	}
 }
@@ -85,35 +111,31 @@ class FacultyController: UIViewController {
 //MARK: - CollectionView Delegate extension
 extension FacultyController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return allFaculties.count
+		if typeFilterFacultyValues.count == 0 {
+			return allFaculties.count
+		} else {
+			return filteredFaculties.count
+		}
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FacultyCell", for: indexPath) as! FacultyCell
-		cell.update(faculty: allFaculties[indexPath.row])
-		return cell
+		if typeFilterFacultyValues.count == 0 {
+			cell.update(faculty: allFaculties[indexPath.row])
+			return cell
+		} else {
+			cell.update(faculty: filteredFaculties[indexPath.row])
+			return cell
+		}
 	}
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-		let size = CGSize(width: collectionView.frame.width / 2 - 5, height: collectionView.frame.width / 2 - 5)
+		let size = CGSize(width: collectionView.frame.width / 2 - 5, height: collectionView.frame.width / 1.8 - 5)
 
 		return size
 	}
 }
-
-//MARK: - Make Filter Names extension
-//extension FacultyController {
-//
-//	func makeFilterCathedralNames(allCathedrals: [Catehdral]) {
-//		for cathedral in allCathedrals {
-//			if let filterName = cathedral.name {
-//				filterCathedralNames.append(filterName)
-//				debugPrint("filterName: \(filterName)")
-//			}
-//		}
-//	}
-//}
 
 //MARK: - Make Cathedrals extension
 extension FacultyController {
