@@ -9,8 +9,8 @@
 import Foundation
 
 class Course {
-	var day: Bool?
-	var evening: Bool?
+	var day: String?
+	var evening: String?
 	var faculty: String?
 	var name: String?
 	var description: String?
@@ -18,9 +18,10 @@ class Course {
 	var program: String?
 	var requirements: String?
 
-	init(name: String?, faculty: String?, description: String?, skills: String?, program: String?, requirements: String?, day: Bool?, evening: Bool?) {
+	init(name: String?, faculty: String?, description: String?, skills: String?, program: String?, requirements: String?, day: String?, evening: String?) {
 
 		self.name = name
+		self.faculty = faculty
 		self.description = description
 		self.skills = skills
 		self.program = program

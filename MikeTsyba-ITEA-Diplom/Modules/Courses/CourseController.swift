@@ -26,6 +26,7 @@ class CourseController: UIViewController {
     }
 
 	//MARK: - viewWillAppear
+	
 
 	//MARK: - Button Actions
 }

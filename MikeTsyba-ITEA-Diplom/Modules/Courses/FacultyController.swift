@@ -135,6 +135,31 @@ extension FacultyController: UICollectionViewDelegate, UICollectionViewDataSourc
 
 		return size
 	}
+
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+
+		debugPrint("*********** Faculty didSelectItemAt  **************")
+
+		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
+		let coursesController = coursesStoryboard.instantiateViewController(withIdentifier: "CoursesController") as! CoursesController
+
+		if typeFilterFacultyValues.count == 0 {
+			coursesController.selectedFaculty = self.allFaculties[indexPath.row]
+		} else {
+			coursesController.selectedFaculty = self.filteredFaculties[indexPath.row]
+		}
+
+		debugPrint("selectedFaculty: \(String(describing: selectedFaculty?.name)))")
+		debugPrint("selectedFaculty: \(String(describing: selectedFaculty?.imageName))")
+		coursesController.allCourses = self.allCourses
+		debugPrint("allCourses: \(String(describing: self.allCourses))")
+		coursesController.signedInStudent = self.signedInStudent
+		debugPrint("signedInStudent: \(String(describing: self.signedInStudent))")
+		coursesController.timeFilterFacultyValues = self.timeFilterFacultyValues
+		debugPrint("timeFilterFacultyValues: \(timeFilterFacultyValues)")
+		navigationController?.pushViewController(coursesController, animated: true)
+	}
 }
 
 //MARK: - Make Cathedrals extension
@@ -179,34 +204,34 @@ extension FacultyController {
 extension FacultyController {
 
 	func makeAllCourses() {
-		let iosBasicCourse = Course(name: "iOS Basic", faculty: "iOS", description: "description", skills: "skills", program: "program", requirements: "requirements", day: false, evening: true)
-		let iosAdvancedCourse = Course(name: "iOS Advanced", faculty: "iOS", description: "description", skills: "skills", program: "program", requirements: "requirements", day: false, evening: true)
+		let iosBasicCourse = Course(name: "iOS Basic", faculty: "iOS", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
+		let iosAdvancedCourse = Course(name: "iOS Advanced", faculty: "iOS", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
 
-		let androidBasicCourse = Course(name: "Android Basic", faculty: "Android", description: "description", skills: "skills", program: "program", requirements: "requirements", day: false, evening: true)
-		let androidAdvancedCourse = Course(name: "Android Advanced", faculty: "Android", description: "description", skills: "skills", program: "program", requirements: "requirements", day: false, evening: true)
+		let androidBasicCourse = Course(name: "Android Basic", faculty: "Android", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
+		let androidAdvancedCourse = Course(name: "Android Advanced", faculty: "Android", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
 
-		let reactBasicCourse = Course(name: "React Basic", faculty: "React", description: "description", skills: "skills", program: "program", requirements: "requirements", day: true, evening: false)
-		let reactAdvancedCourse = Course(name: "React Advanced", faculty: "React", description: "description", skills: "skills", program: "program", requirements: "requirements", day: true, evening: false)
+		let reactBasicCourse = Course(name: "React Basic", faculty: "React", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
+		let reactAdvancedCourse = Course(name: "React Advanced", faculty: "React", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
 
-		let frontEndCourse = Course(name: "HTML/CSS", faculty: "Front End", description: "description", skills: "skills", program: "program", requirements: "requirements", day: true, evening: false)
-		let jsBasicCourse = Course(name: "JS Basic", faculty: "JS", description: "description", skills: "skills", program: "program", requirements: "requirements", day: false, evening: true)
-		let jsAdvancedCourse = Course(name: "JS Advanced", faculty: "JS", description: "description", skills: "skills", program: "program", requirements: "requirements", day: false, evening: true)
+		let frontEndCourse = Course(name: "HTML/CSS", faculty: "Front End", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
+		let jsBasicCourse = Course(name: "JS Basic", faculty: "JS", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
+		let jsAdvancedCourse = Course(name: "JS Advanced", faculty: "JS", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
 
-		let uiCourse = Course(name: "UI", faculty: "Web Design", description: "description", skills: "skills", program: "program", requirements: "requirements", day: false, evening: true)
-		let uxCourse = Course(name: "UX", faculty: "Web Design", description: "description", skills: "skills", program: "program", requirements: "requirements", day: false, evening: true)
-		let tildaCourse = Course(name: "Tilda", faculty: "Web Design", description: "description", skills: "skills", program: "program", requirements: "requirements", day: true, evening: false)
+		let uiCourse = Course(name: "UI", faculty: "Web Design", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
+		let uxCourse = Course(name: "UX", faculty: "Web Design", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
+		let tildaCourse = Course(name: "Tilda", faculty: "Web Design", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
 
-		let qaBasicCourse = Course(name: "QA Basic", faculty: "Testing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: false, evening: true)
-		let qaAdvancedCourse = Course(name: "QA Advanced", faculty: "Testing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: false, evening: true)
-		let qaAutomationCourse = Course(name: "QA Automation", faculty: "Testing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: true, evening: false)
+		let qaBasicCourse = Course(name: "QA Basic", faculty: "Testing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
+		let qaAdvancedCourse = Course(name: "QA Advanced", faculty: "Testing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
+		let qaAutomationCourse = Course(name: "QA Automation", faculty: "Testing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
 
-		let smmCourse = Course(name: "Social Media Marketing", faculty: "Digital Marketing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: true, evening: false)
-		let emailCourse = Course(name: "Email Marketing", faculty: "Digital Marketing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: false, evening: true)
+		let smmCourse = Course(name: "Social Media Marketing", faculty: "Digital Marketing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
+		let emailCourse = Course(name: "Email Marketing", faculty: "Digital Marketing", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
 
-		let pmpCourse = Course(name: "Professional Project Management", faculty: "Project Management", description: "description", skills: "skills", program: "program", requirements: "requirements", day: true, evening: false)
-		let agileScrumCourse = Course(name: "Agile/Scrum", faculty: "Project Management", description: "description", skills: "skills", program: "program", requirements: "requirements", day: false, evening: true)
+		let pmpCourse = Course(name: "Professional Project Management", faculty: "Project Management", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
+		let agileScrumCourse = Course(name: "Agile/Scrum", faculty: "Project Management", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "", evening: "Evening")
 
-		let programmingBasicCourse = Course(name: "Basic Programming", faculty: "Programming", description: "description", skills: "skills", program: "program", requirements: "requirements", day: true, evening: true)
+		let programmingBasicCourse = Course(name: "Basic Programming", faculty: "Programming", description: "description", skills: "skills", program: "program", requirements: "requirements", day: "Day", evening: "")
 
 		allCourses = [iosBasicCourse, iosAdvancedCourse, androidBasicCourse, androidAdvancedCourse, reactBasicCourse, reactAdvancedCourse, frontEndCourse, jsBasicCourse, jsAdvancedCourse, uiCourse, uxCourse, tildaCourse, qaBasicCourse, qaAdvancedCourse, qaAutomationCourse, smmCourse, emailCourse, pmpCourse, agileScrumCourse, programmingBasicCourse]
 	}
