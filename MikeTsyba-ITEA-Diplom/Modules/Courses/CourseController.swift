@@ -105,7 +105,7 @@ class CourseController: UIViewController {
 	}
 }
 
-//MARK: - Extension
+//MARK: - designView Extension
 extension CourseController {
 	func designView() {
 
