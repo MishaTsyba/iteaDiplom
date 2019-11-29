@@ -41,6 +41,8 @@ class CoursesController: UIViewController {
 	//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+		debugPrint("*********** Courses viewDidLoad  **************")
+		debugPrint("student: \(String(describing: signedInStudent))")
 		designView()
 		courseTableView.register(UINib(nibName: "CourseCell", bundle: nil), forCellReuseIdentifier: "CourseCell")
 		courseTableView.reloadData()

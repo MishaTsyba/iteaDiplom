@@ -41,6 +41,8 @@ class CourseController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		debugPrint("*********** Course viewDidLoad  **************")
+		debugPrint("student: \(String(describing: signedInStudent))")
 
 		if let item = course {
 			if let courseName = item.name {
@@ -93,7 +95,9 @@ class CourseController: UIViewController {
 		let courseOrderController = coursesStoryboard.instantiateViewController(withIdentifier: "CourseOrderController") as! CourseOrderController
 
 		courseOrderController.signedInStudent = self.signedInStudent
+		courseOrderController.course = self.course
 
+		debugPrint("signedInStudent: \(String(describing: signedInStudent))")
 		debugPrint("course: \(String(describing: course))")
 		navigationController?.pushViewController(courseOrderController, animated: true)
 	}

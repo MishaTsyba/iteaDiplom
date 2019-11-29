@@ -125,7 +125,7 @@
                                                                     <constraint firstAttribute="height" constant="60" id="Cku-zO-1EP"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                             </textField>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2IE-GJ-FnB">
                                                                 <rect key="frame" x="62" y="71" width="239" height="1"/>
@@ -173,7 +173,7 @@
                                                                     <constraint firstAttribute="height" constant="60" id="dOy-JU-6wn"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                                             </textField>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AZ0-op-aNw">
                                                                 <rect key="frame" x="62" y="71" width="239" height="1"/>
@@ -265,7 +265,7 @@
                         <constraints>
                             <constraint firstItem="t73-nT-Du3" firstAttribute="trailing" secondItem="euc-gQ-g6z" secondAttribute="trailing" id="0LQ-ay-NNb"/>
                             <constraint firstItem="t73-nT-Du3" firstAttribute="top" secondItem="euc-gQ-g6z" secondAttribute="top" id="Gte-vq-zhd"/>
-                            <constraint firstItem="t73-nT-Du3" firstAttribute="bottom" secondItem="euc-gQ-g6z" secondAttribute="bottom" id="H3o-Ti-iak"/>
+                            <constraint firstItem="euc-gQ-g6z" firstAttribute="bottom" secondItem="t73-nT-Du3" secondAttribute="bottom" id="H3o-Ti-iak"/>
                             <constraint firstItem="t73-nT-Du3" firstAttribute="leading" secondItem="euc-gQ-g6z" secondAttribute="leading" id="Ory-pk-ElV"/>
                             <constraint firstItem="5uB-9J-S7b" firstAttribute="bottom" secondItem="euc-gQ-g6z" secondAttribute="bottom" id="Ts0-PQ-S0E"/>
                             <constraint firstItem="5uB-9J-S7b" firstAttribute="trailing" secondItem="euc-gQ-g6z" secondAttribute="trailing" id="bOA-Tz-3Ti"/>
@@ -289,6 +289,7 @@
                         <outlet property="passwordPhotoView" destination="Fdy-rV-SBp" id="b0I-0Q-hlP"/>
                         <outlet property="passwordTextField" destination="sqV-IJ-Txq" id="HCC-rK-lnJ"/>
                         <outlet property="passwordView" destination="tPN-G1-DY4" id="YfN-6r-Ls0"/>
+                        <outlet property="scrollViewToSafeAreaBottomConstraint" destination="H3o-Ti-iak" id="9vU-RB-Ibo"/>
                         <outlet property="signInButton" destination="nfu-5F-5EQ" id="pcq-ag-m8D"/>
                         <outlet property="signInButtonView" destination="qXL-js-AMj" id="hOd-Yw-gdx"/>
                         <outlet property="signInContentView" destination="8Uv-QC-pZw" id="5Kc-gq-rPg"/>

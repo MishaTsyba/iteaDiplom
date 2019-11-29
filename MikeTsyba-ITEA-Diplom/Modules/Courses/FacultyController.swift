@@ -46,7 +46,8 @@ class FacultyController: UIViewController {
 	//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-		debugPrint("*********** filter viewDidLoad  **************")
+		debugPrint("*********** Faculty viewDidLoad  **************")
+		debugPrint("student: \(String(describing: signedInStudent))")
 
 		makeAllCourses()
 		makeAllFaculties()
@@ -65,7 +66,7 @@ class FacultyController: UIViewController {
 	//MARK: - viewWillAppear
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
-		debugPrint("*********** filter viewWillAppear  **************")
+		debugPrint("*********** Faculty viewWillAppear  **************")
 		filteredFaculties = []
 		debugPrint("typeFilterFacultyValues: \(typeFilterFacultyValues)")
 

@@ -1024,6 +1024,9 @@
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iC5-HL-dhD">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="40"/>
+                                        <connections>
+                                            <action selector="didTapConfirmPrivacyButton:" destination="Ogn-hw-OHz" eventType="touchUpInside" id="600-u7-NvT"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

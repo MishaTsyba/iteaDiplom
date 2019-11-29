@@ -24,12 +24,24 @@ class CourseOrderController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		debugPrint("*********** CourseOrder viewDidLoad  **************")
+		debugPrint("student: \(String(describing: signedInStudent))")
 
     }
 
 	//MARK: - viewWillAppear
 
 	//MARK: - Button Actions
+	@IBAction func didTapConfirmPrivacyButton(_ sender: Any) {
+		debugPrint("*********** tap back  **************")
+		let viewControllersOfNavigation = navigationController?.viewControllers
+
+		if let controllers = viewControllersOfNavigation {
+			if let courseController = controllers[3] as? CourseController {
+				navigationController?.popToViewController(courseController, animated: true)
+			}
+		}
+	}
 }
 
 //MARK: - Extension
