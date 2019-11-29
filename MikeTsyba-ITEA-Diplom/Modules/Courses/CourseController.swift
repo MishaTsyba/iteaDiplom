@@ -70,6 +70,7 @@ class CourseController: UIViewController {
 
 	//MARK: - Button Actions
 	@IBAction func didTapMoreInfoButton(_ sender: Any) {
+		debugPrint("*********** tap info  **************")
 		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
 		let courseDetailsController = coursesStoryboard.instantiateViewController(withIdentifier: "CourseDetailesController") as! CourseDetailesController
 
@@ -91,6 +92,7 @@ class CourseController: UIViewController {
 	}
 
 	@IBAction func didTapBuyButton(_ sender: Any) {
+		debugPrint("*********** tap order  **************")
 		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
 		let courseOrderController = coursesStoryboard.instantiateViewController(withIdentifier: "CourseOrderController") as! CourseOrderController
 
