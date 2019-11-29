@@ -11,6 +11,34 @@ import UIKit
 class CourseOrderController: UIViewController {
 
 	//MARK: - Interface Outlets
+	@IBOutlet weak var backgroundView: UIView!
+	@IBOutlet weak var backgroundImageView: UIImageView!
+
+	@IBOutlet weak var titleView: UIView!
+	@IBOutlet weak var backButtonView: UIView!
+	@IBOutlet weak var backButton: UIButton!
+	@IBOutlet weak var titleLabel: UILabel!
+
+	@IBOutlet weak var shadowScrollView: UIView!
+	@IBOutlet weak var mainContentView: UIView!
+	@IBOutlet weak var innerContentView: UIView!
+	@IBOutlet weak var fullNameLabel: UILabel!
+	@IBOutlet weak var emailLabel: UILabel!
+	@IBOutlet weak var phoneLabel: UILabel!
+	@IBOutlet weak var commentLabel: UILabel!
+	@IBOutlet weak var fullNameTextField: UITextField!
+	@IBOutlet weak var emailTextField: UITextField!
+	@IBOutlet weak var phoneTextField: UITextField!
+	@IBOutlet weak var commentTextView: UIView!
+	@IBOutlet weak var buyButtonView: UIView!
+	@IBOutlet weak var buyButton: UIButton!
+	@IBOutlet weak var privacyView: UIView!
+	@IBOutlet weak var privacyImageView: UIImageView!
+	@IBOutlet weak var privacyLabel: UILabel!
+	@IBOutlet weak var privacyButton: UIButton!
+
+
+
 
 	//MARK: - Custom variables
 
@@ -32,7 +60,7 @@ class CourseOrderController: UIViewController {
 	//MARK: - viewWillAppear
 
 	//MARK: - Button Actions
-	@IBAction func didTapConfirmPrivacyButton(_ sender: Any) {
+	@IBAction func didTapBackButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
 		let viewControllersOfNavigation = navigationController?.viewControllers
 
@@ -41,6 +69,12 @@ class CourseOrderController: UIViewController {
 				navigationController?.popToViewController(courseController, animated: true)
 			}
 		}
+	}
+
+	@IBAction func didTapBuyButton(_ sender: Any) {
+	}
+	
+	@IBAction func didTapConfirmPrivacyButton(_ sender: Any) {
 	}
 }
 
