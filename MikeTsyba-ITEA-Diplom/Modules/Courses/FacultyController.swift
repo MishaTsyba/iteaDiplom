@@ -47,7 +47,7 @@ class FacultyController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		debugPrint("*********** filter viewDidLoad  **************")
-		makeStudent()
+
 		makeAllCourses()
 		makeAllFaculties()
 		makeAllCathedrals()
@@ -88,8 +88,8 @@ class FacultyController: UIViewController {
 	//MARK: - MyProfile Button Actions
 	@IBAction func didTapMyProfileButton(_ sender: Any) {
 
-		let coursesStoryboard = UIStoryboard(name: "Student", bundle: nil)
-		let studentController = coursesStoryboard.instantiateViewController(withIdentifier: "StudentController") as! StudentController
+		let studentStoryboard = UIStoryboard(name: "Student", bundle: nil)
+		let studentController = studentStoryboard.instantiateViewController(withIdentifier: "StudentController") as! StudentController
 
 		studentController.signedInStudent = self.signedInStudent
 		studentController.allCourses = self.allCourses
@@ -97,12 +97,7 @@ class FacultyController: UIViewController {
 	}
 
 	//MARK: - Filter Button Actions
-	
 	@IBAction func didTapFilterButton(_ sender: Any) {
-
-		//makeFilterCathedralNames(allCathedrals: self.allCathedrals)
-		
-		//debugPrint("filterCathedralNames: \(filterCathedralNames)")
 
 		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
 		let filterController = coursesStoryboard.instantiateViewController(withIdentifier: "FilterController") as! FilterController
@@ -243,15 +238,6 @@ extension FacultyController {
 		allCourses = [iosBasicCourse, iosAdvancedCourse, androidBasicCourse, androidAdvancedCourse, reactBasicCourse, reactAdvancedCourse, frontEndCourse, jsBasicCourse, jsAdvancedCourse, uiCourse, uxCourse, tildaCourse, qaBasicCourse, qaAdvancedCourse, qaAutomationCourse, smmCourse, emailCourse, pmpCourse, agileScrumCourse, programmingBasicCourse]
 	}
 }
-
-//MARK: - Make Student extension
-extension FacultyController {
-
-	func makeStudent() {
-		signedInStudent = Student(firstName: "Mike", lastName: "Tsyba", age: "41", city: "Kiev", birthday: "09-04-1978", phone: "+380503387901", workPlace: "Home Office", email: "@", password: "m", currentCourse: "iOS Basic", completedCourses: ["Basic Programming"])
-	}
-}
-
 
 extension FacultyController {
 	func designView() {

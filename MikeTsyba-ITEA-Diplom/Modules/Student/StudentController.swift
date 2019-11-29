@@ -43,6 +43,26 @@ class StudentController: UIViewController {
 	//MARK: - viewWillAppear
 
 	//MARK: - Button Actions
+	@IBAction func didTapSignOutButton(_ sender: Any) {
+		let authStoryboard = UIStoryboard(name: "Auth", bundle: nil)
+		let signInController = authStoryboard.instantiateViewController(withIdentifier: "SignInController") as! SignInController
+
+		self.signedInStudent = nil
+
+		signInController.signedInStudent = self.signedInStudent
+		navigationController?.pushViewController(signInController, animated: true)
+	}
+
+	@IBAction func didTapBackButton(_ sender: Any) {
+		let viewControllersOfNavigation = navigationController?.viewControllers
+
+		if let controllers = viewControllersOfNavigation {
+			if let facultyController = controllers[2] as? FacultyController {
+				navigationController?.popToViewController(facultyController, animated: true)
+			}
+		}
+	}
+
 }
 
 //MARK: - Extension

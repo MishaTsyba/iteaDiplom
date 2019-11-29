@@ -70,6 +70,9 @@
                                                 <state key="normal" title="Back">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="didTapBackButton:" destination="p4Z-Fk-SX4" eventType="touchUpInside" id="UXF-6g-WaH"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.078158445660000006" green="0.3117581606" blue="0.23092994089999999" alpha="0.90413182219999999" colorSpace="custom" customColorSpace="sRGB"/>
@@ -86,7 +89,7 @@
                                             <constraint firstAttribute="height" constant="30" id="Zsy-No-rUh"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
-                                        <color key="textColor" red="0.092815615239999996" green="0.099043957890000006" blue="0.41694539790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -112,15 +115,41 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RNi-Ut-ORX" userLabel="Student Content View">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="508"/>
                                                 <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVt-RV-DpD" userLabel="Save Button View">
+                                                        <rect key="frame" x="263" y="464" width="60" height="29"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvx-Zm-Dkr">
+                                                                <rect key="frame" x="0.0" y="0.0" width="60" height="29"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="29" id="8Vf-yH-6lq"/>
+                                                                    <constraint firstAttribute="width" constant="60" id="WGw-wq-5mM"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="11"/>
+                                                                <state key="normal" title="Sign Out">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="didTapSignOutButton:" destination="p4Z-Fk-SX4" eventType="touchUpInside" id="kHO-ti-eiM"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="0.90129841550000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="29" id="Gra-u2-FDv"/>
+                                                            <constraint firstAttribute="width" constant="60" id="Pd2-cs-XAT"/>
+                                                            <constraint firstItem="Nvx-Zm-Dkr" firstAttribute="centerY" secondItem="fVt-RV-DpD" secondAttribute="centerY" id="TtU-YT-OXD"/>
+                                                            <constraint firstItem="Nvx-Zm-Dkr" firstAttribute="centerX" secondItem="fVt-RV-DpD" secondAttribute="centerX" id="oOf-rj-CQq"/>
+                                                        </constraints>
+                                                    </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xX6-ru-WY1">
-                                                        <rect key="frame" x="91.5" y="464" width="160" height="29"/>
+                                                        <rect key="frame" x="123" y="464" width="120" height="29"/>
                                                         <color key="backgroundColor" red="0.1026990488" green="0.38416522739999998" blue="0.25722604989999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="160" id="I3L-ee-ZE7"/>
+                                                            <constraint firstAttribute="width" constant="120" id="I3L-ee-ZE7"/>
                                                             <constraint firstAttribute="height" constant="29" id="gjX-C9-i5q"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <state key="normal" title="Student Last Courses">
+                                                        <state key="normal" title="My Last Courses">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="titleShadowColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
@@ -134,7 +163,7 @@
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="73H-ca-WHa"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
-                                                                <color key="textColor" red="0.092815615239999996" green="0.099043957890000006" blue="0.41694539790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ycE-wN-rEB">
@@ -143,7 +172,7 @@
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="cQR-EE-sdc"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
-                                                                <color key="textColor" red="0.092815615239999996" green="0.099043957890000006" blue="0.41694539790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dB-Pc-UOU">
@@ -152,7 +181,7 @@
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="uc4-Mt-r4w"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
-                                                                <color key="textColor" red="0.092815615239999996" green="0.099043957890000006" blue="0.41694539790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3FQ-dP-Gmt">
@@ -161,7 +190,7 @@
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="m0m-jE-vwK"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
-                                                                <color key="textColor" red="0.092815615239999996" green="0.099043957890000006" blue="0.41694539790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qqj-Ei-4xu">
@@ -170,7 +199,7 @@
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="WZj-gO-BHk"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
-                                                                <color key="textColor" red="0.092815615239999996" green="0.099043957890000006" blue="0.41694539790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lhs-tJ-WiZ">
@@ -179,7 +208,7 @@
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="MAP-iK-rXc"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
-                                                                <color key="textColor" red="0.092815615239999996" green="0.099043957890000006" blue="0.41694539790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ccA-JP-YFs">
@@ -189,7 +218,7 @@
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="WPf-uC-a7p"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
-                                                                <color key="textColor" red="0.092815615239999996" green="0.099043957890000006" blue="0.41694539790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wBw-Lt-pSw">
@@ -255,7 +284,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="1dB-Pc-UOU" firstAttribute="leading" secondItem="ycE-wN-rEB" secondAttribute="leading" id="2OJ-KJ-FBd"/>
                                                             <constraint firstAttribute="trailing" secondItem="S6w-Fs-wNh" secondAttribute="trailing" constant="8" id="4cj-i4-ehA"/>
@@ -328,7 +357,7 @@
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="SjF-7H-whK"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                                                <color key="textColor" red="0.092815615239999996" green="0.099043957890000006" blue="0.41694539790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;last name&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjL-UG-3M4">
@@ -337,11 +366,11 @@
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="P0y-CD-VEu"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                                                <color key="textColor" red="0.092815615239999996" green="0.099043957890000006" blue="0.41694539790000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="XDh-0z-6vm" firstAttribute="top" secondItem="RzI-8c-vfU" secondAttribute="top" id="6ii-gF-qig"/>
                                                             <constraint firstItem="tjL-UG-3M4" firstAttribute="top" secondItem="XDh-0z-6vm" secondAttribute="bottom" constant="8" id="H4Q-8S-6Ul"/>
@@ -356,16 +385,18 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="xX6-ru-WY1" secondAttribute="bottom" constant="15" id="0gW-A9-Aei"/>
                                                     <constraint firstItem="CzU-b9-r8n" firstAttribute="top" secondItem="RNi-Ut-ORX" secondAttribute="top" constant="8" id="6Gp-x0-A1a"/>
                                                     <constraint firstAttribute="trailing" secondItem="SzO-dI-gz9" secondAttribute="trailing" id="6xj-rb-m3v"/>
-                                                    <constraint firstItem="xX6-ru-WY1" firstAttribute="centerX" secondItem="RNi-Ut-ORX" secondAttribute="centerX" id="AMq-Es-O46"/>
+                                                    <constraint firstAttribute="bottom" secondItem="fVt-RV-DpD" secondAttribute="bottom" constant="15" id="HMf-20-Ko2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fVt-RV-DpD" secondAttribute="trailing" constant="20" id="K0Y-Fk-ihm"/>
+                                                    <constraint firstItem="fVt-RV-DpD" firstAttribute="top" secondItem="SzO-dI-gz9" secondAttribute="bottom" constant="20" id="Qvy-1c-lHc"/>
                                                     <constraint firstItem="SzO-dI-gz9" firstAttribute="leading" secondItem="RNi-Ut-ORX" secondAttribute="leading" id="Rp9-gt-NiL"/>
                                                     <constraint firstItem="RzI-8c-vfU" firstAttribute="centerY" secondItem="CzU-b9-r8n" secondAttribute="centerY" id="U0P-2Z-DSa"/>
+                                                    <constraint firstItem="xX6-ru-WY1" firstAttribute="centerY" secondItem="fVt-RV-DpD" secondAttribute="centerY" id="UtR-Eb-Wb2"/>
+                                                    <constraint firstItem="fVt-RV-DpD" firstAttribute="leading" secondItem="xX6-ru-WY1" secondAttribute="trailing" constant="20" id="WLJ-dE-I2E"/>
                                                     <constraint firstItem="SzO-dI-gz9" firstAttribute="top" secondItem="CzU-b9-r8n" secondAttribute="bottom" constant="8" id="caY-ex-pRm"/>
                                                     <constraint firstItem="CzU-b9-r8n" firstAttribute="leading" secondItem="RNi-Ut-ORX" secondAttribute="leading" constant="8" id="ctP-ie-mrC"/>
                                                     <constraint firstItem="RzI-8c-vfU" firstAttribute="leading" secondItem="CzU-b9-r8n" secondAttribute="trailing" constant="8" id="fad-2k-P1A"/>
-                                                    <constraint firstItem="xX6-ru-WY1" firstAttribute="top" secondItem="SzO-dI-gz9" secondAttribute="bottom" constant="20" id="uZA-MX-sZc"/>
                                                     <constraint firstAttribute="trailing" secondItem="RzI-8c-vfU" secondAttribute="trailing" constant="8" id="uyA-7N-gp7"/>
                                                 </constraints>
                                             </view>

@@ -21,10 +21,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tVK-uK-aMq" userLabel="Base Content View">
-                                <rect key="frame" x="12" y="12" width="296" height="80"/>
+                                <rect key="frame" x="6" y="6" width="308" height="92"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;fruit name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KB-Fc-65S">
-                                        <rect key="frame" x="12" y="24" width="272" height="32"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;course name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KB-Fc-65S">
+                                        <rect key="frame" x="12" y="24" width="284" height="44"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -42,10 +42,10 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="tVK-uK-aMq" firstAttribute="top" secondItem="9JN-kP-wPE" secondAttribute="top" constant="12" id="8wk-AO-Okb"/>
-                            <constraint firstAttribute="trailing" secondItem="tVK-uK-aMq" secondAttribute="trailing" constant="12" id="EVO-sG-ZIv"/>
-                            <constraint firstItem="tVK-uK-aMq" firstAttribute="leading" secondItem="9JN-kP-wPE" secondAttribute="leading" constant="12" id="R6r-Q3-YTP"/>
-                            <constraint firstAttribute="bottom" secondItem="tVK-uK-aMq" secondAttribute="bottom" constant="12" id="afz-YH-snu"/>
+                            <constraint firstItem="tVK-uK-aMq" firstAttribute="top" secondItem="9JN-kP-wPE" secondAttribute="top" constant="6" id="8wk-AO-Okb"/>
+                            <constraint firstAttribute="trailing" secondItem="tVK-uK-aMq" secondAttribute="trailing" constant="6" id="EVO-sG-ZIv"/>
+                            <constraint firstItem="tVK-uK-aMq" firstAttribute="leading" secondItem="9JN-kP-wPE" secondAttribute="leading" constant="6" id="R6r-Q3-YTP"/>
+                            <constraint firstAttribute="bottom" secondItem="tVK-uK-aMq" secondAttribute="bottom" constant="6" id="afz-YH-snu"/>
                         </constraints>
                     </view>
                 </subviews>
