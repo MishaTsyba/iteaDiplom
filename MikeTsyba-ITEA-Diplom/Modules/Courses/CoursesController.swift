@@ -81,7 +81,7 @@ class CoursesController: UIViewController {
 
 		if let controllers = viewControllersOfNavigation {
 
-			if let facultyController = controllers[0] as? FacultyController {
+			if let facultyController = controllers[1] as? FacultyController {
 				navigationController?.popToViewController(facultyController, animated: true)
 			}
 		}

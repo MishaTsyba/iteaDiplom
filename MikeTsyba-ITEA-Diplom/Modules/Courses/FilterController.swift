@@ -243,7 +243,7 @@ class FilterController: UIViewController {
 
 		if let controllers = viewControllersOfNavigation {
 
-			if let facultyController = controllers[0] as? FacultyController {
+			if let facultyController = controllers[1] as? FacultyController {
 				facultyController.timeFilterFacultyValues = self.timeFilterFacultyValues
 				facultyController.typeFilterFacultyValues = self.typeFilterFacultyValues
 				facultyController.savedTimeFilterFacultyValues = self.savedTimeFilterFacultyValues
