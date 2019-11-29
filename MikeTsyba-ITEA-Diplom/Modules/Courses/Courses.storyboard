@@ -310,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xft-na-JXi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1037.5999999999999" y="744.3778110944528"/>
+            <point key="canvasLocation" x="1694" y="74"/>
         </scene>
         <!--Filter Controller-->
         <scene sceneID="ajS-OE-rnC">
@@ -994,7 +994,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ii1-G8-Nwp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1695.2" y="75.112443778110944"/>
+            <point key="canvasLocation" x="1039" y="741"/>
         </scene>
         <!--Course Order Controller-->
         <scene sceneID="faX-W5-fDZ">
@@ -1318,7 +1318,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="050-Er-9CZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2352.8000000000002" y="75.112443778110944"/>
+            <point key="canvasLocation" x="3026" y="75"/>
         </scene>
         <!--Course Controller-->
         <scene sceneID="heF-Cq-Y13">
@@ -1383,7 +1383,7 @@
                                                     <constraint firstAttribute="height" constant="60" id="rQl-qB-djI"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                                <state key="normal" title="Order It!">
+                                                <state key="normal" title="TAKE it!">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -1570,7 +1570,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcC-fI-gMa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1693.5999999999999" y="743.47826086956525"/>
+            <point key="canvasLocation" x="2354" y="75"/>
         </scene>
         <!--Course Detailes Controller-->
         <scene sceneID="P0W-C1-uQl">
@@ -1772,7 +1772,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juA-6d-Snc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2354" y="744"/>
+            <point key="canvasLocation" x="2353" y="741"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uMT-4y-GQR">

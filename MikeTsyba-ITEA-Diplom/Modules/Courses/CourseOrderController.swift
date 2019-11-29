@@ -41,6 +41,7 @@ class CourseOrderController: UIViewController {
 
 
 	//MARK: - Custom variables
+	var privacyValid = false
 
 	//input data
 	var course: Course?
@@ -75,6 +76,12 @@ class CourseOrderController: UIViewController {
 	}
 	
 	@IBAction func didTapConfirmPrivacyButton(_ sender: Any) {
+		privacyValid = !privacyValid
+		if !privacyValid {
+			privacyImageView.image = UIImage(named: "checkBoxUnChecked")
+		} else {
+			privacyImageView.image = UIImage(named: "checkBoxChecked")
+		}
 	}
 }
 
