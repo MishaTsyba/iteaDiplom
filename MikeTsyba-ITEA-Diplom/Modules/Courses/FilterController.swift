@@ -77,7 +77,8 @@ class FilterController: UIViewController {
 
 	//MARK: - Custom variables
 	//input data
-
+	var newAllCatehdrals = [NewCatehdral]()
+	
 	//output data
 	var timeFilterFacultyValues = [String]()
 	var typeFilterFacultyValues = [String]()

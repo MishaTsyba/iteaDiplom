@@ -11,7 +11,7 @@
         <!--Sign In Controller-->
         <scene sceneID="WFx-cR-iU2">
             <objects>
-                <viewController storyboardIdentifier="SignInController" id="9h8-Jk-L6c" customClass="SignInController" customModule="MikeTsyba_ITEA_Diplom" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInController" id="9h8-Jk-L6c" customClass="SignInController" customModule="ITEA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XYu-Bx-MwD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -125,7 +125,7 @@
                                                                     <constraint firstAttribute="height" constant="60" id="Cku-zO-1EP"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
                                                             </textField>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2IE-GJ-FnB">
                                                                 <rect key="frame" x="62" y="71" width="239" height="1"/>

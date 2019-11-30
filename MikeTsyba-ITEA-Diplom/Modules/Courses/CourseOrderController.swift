@@ -95,14 +95,22 @@ class CourseOrderController: UIViewController {
 
 	@IBAction func didTapBuyButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
-		let viewControllersOfNavigation = navigationController?.viewControllers
+		if privacyValid {
+			let viewControllersOfNavigation = navigationController?.viewControllers
 
-		if let controllers = viewControllersOfNavigation {
+			if let controllers = viewControllersOfNavigation {
 
-			if let facultyController = controllers[1] as? FacultyController {
-				navigationController?.popToViewController(facultyController, animated: true)
+				if let facultyController = controllers[1] as? FacultyController {
+
+					facultyController.signedInStudent = self.signedInStudent
+					facultyController.course = self.course
+					navigationController?.popToViewController(facultyController, animated: true)
+				}
 			}
+		} else {
+			validationAlert(title: "That's bad that's bad ...", message: "You did not agreed to Our Privacy Policy ...", actionTitle: "Force Unwrap Now!")
 		}
+
 	}
 	
 	@IBAction func didTapConfirmPrivacyButton(_ sender: Any) {

@@ -46,6 +46,7 @@ class FacultyController: UIViewController {
 
 	//transfer data
 	var signedInStudent: Student?
+	var course: Course?
 
 	//MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -106,7 +107,9 @@ class FacultyController: UIViewController {
 
 		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
 		let filterController = coursesStoryboard.instantiateViewController(withIdentifier: "FilterController") as! FilterController
-		
+
+		filterController.newAllCatehdrals = self.newAllCatehdrals
+
 		filterController.timeFilterFacultyValues = self.timeFilterFacultyValues
 		filterController.typeFilterFacultyValues = self.typeFilterFacultyValues
 		filterController.savedTimeFilterFacultyValues = self.savedTimeFilterFacultyValues
