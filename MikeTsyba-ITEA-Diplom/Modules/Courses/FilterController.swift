@@ -90,12 +90,19 @@ class FilterController: UIViewController {
 	var savedTypeFilterFacultyValues = [String]()
 	
 	//MARK: - viewDidLoad
-
     override func viewDidLoad() {
         super.viewDidLoad()
 		debugPrint("*********** filter viewDidLoad  **************")
-		designView()
 		makeFilterNames()
+		designViews(view: filterTitleView)
+		designViews(view: backButtonView)
+		designViews(view: saveButtonView)
+		designViews(view: shadowFilterView)
+		designViews(view: timeFilterView)
+		designViews(view: typeFilterView)
+		designLabels(view: titleLabel)
+		designLabels(view: timeFilterLabel)
+		designLabels(view: typeFilterLabel)
 		debugPrint("timeFilterFacultyValues: \(timeFilterFacultyValues)")
 		debugPrint("typeFilterFacultyValues: \(typeFilterFacultyValues)")
 		debugPrint("savedTimeFilterFacultyValues: \(savedTimeFilterFacultyValues)")
@@ -258,7 +265,7 @@ class FilterController: UIViewController {
 				debugPrint("typeFilterFacultyValues: \(typeFilterFacultyValues)")
 				debugPrint("savedTimeFilterFacultyValues: \(savedTimeFilterFacultyValues)")
 				debugPrint("savedTypeFilterFacultyValues: \(savedTypeFilterFacultyValues)")
-				navigationController?.popToViewController(facultyController, animated: true)
+				navigationController?.popToViewController(facultyController, animated: false)
 			}
 		}
 	}
@@ -273,7 +280,7 @@ class FilterController: UIViewController {
 	}
 }
 
-//MARK: - tap filter Views Actions Extension
+//MARK: - tap Filters Actions Extension
 extension FilterController {
 	func toggleTimeFilter(timeFilter: [String]) {
 
@@ -357,49 +364,57 @@ extension FilterController {
 	}
 }
 
+//MARK: - Design UI Extension
 extension FilterController {
-	func designView() {
 
-		// set the titleView shadow properties
-		filterTitleView.layer.shadowColor = UIColor.black.cgColor
-		filterTitleView.layer.shadowOffset = CGSize(width: 2, height: 2)
-		filterTitleView.layer.shadowOpacity = 1
-		filterTitleView.layer.shadowRadius = 25
+	//MARK: - Design UI
+	func designViews(view: UIView) {
 
-		// set the titleView corner radius
-		filterTitleView.layer.cornerRadius = 7
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
 
-		// set the shadowCollectionView shadow properties
-		shadowFilterView.layer.shadowColor = UIColor.black.cgColor
-		shadowFilterView.layer.shadowOffset = CGSize(width: 2, height: 2)
-		shadowFilterView.layer.shadowOpacity = 1
-		shadowFilterView.layer.shadowRadius = 25
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.9
+		view.layer.shadowRadius = 3
 
-		// set the round view for image
-		shadowFilterView.clipsToBounds = true
-		shadowFilterView.layer.masksToBounds = false
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 7
+	}
 
-		// set the shadowCollectionView corner radius
-		shadowFilterView.layer.cornerRadius = 7
-		timeFilterView.layer.cornerRadius = 7
-		typeFilterView.layer.cornerRadius = 7
+	//MARK: - Design Labels
+	func designLabels(view: UIView) {
 
-		// set the filterButtonView shadow properties
-		backButtonView.layer.shadowColor = UIColor.black.cgColor
-		backButtonView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-		backButtonView.layer.shadowOpacity = 0.7
-		backButtonView.layer.shadowRadius = 3
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
 
-		// set the filterButtonView corner radius
-		backButtonView.layer.cornerRadius = 7
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.7
+		view.layer.shadowRadius = 0.5
 
-		// set the titleView shadow properties
-		saveButtonView.layer.shadowColor = UIColor.black.cgColor
-		saveButtonView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-		saveButtonView.layer.shadowOpacity = 0.7
-		saveButtonView.layer.shadowRadius = 3
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 0
+	}
 
-		// set the titleView corner radius
-		saveButtonView.layer.cornerRadius = 7
+	//MARK: - Design Icons
+	func designIcons(view: UIView) {
+
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
+
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.4
+		view.layer.shadowRadius = 0.5
+
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 7
 	}
 }

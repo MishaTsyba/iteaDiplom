@@ -14,8 +14,8 @@ class StudentCoursesController: UIViewController {
 
 	//MARK: - Custom variables
 	var signedInStudent: Student?
-	var currentStudentCourse: Course?
-	var completedStudentCourses: [Course]?
+	var currentStudentCourse: NewCourse?
+	var completedStudentCourses: [NewCourse]?
 
 	//MARK: - viewDidLoad
 

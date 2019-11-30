@@ -25,6 +25,8 @@ class FacultyController: UIViewController {
 	var newAllCatehdrals = [NewCatehdral]()
 	var newAllFaculties = [NewFaculty]()
 	var newAllCourses = [NewCourse]()
+	var studentCurrentCourse: NewCourse?
+	var studentCompletedCourses = [NewCourse]()
 
 	let name = Name()
 	let time = Time()
@@ -34,8 +36,6 @@ class FacultyController: UIViewController {
 	var typeFilterFacultyValues = [String]()
 	var savedTimeFilterFacultyValues = [String]()
 	var savedTypeFilterFacultyValues = [String]()
-
-	//processing data
 
 	//displayed data
 	var filteredFaculties = [NewFaculty]()
@@ -54,12 +54,16 @@ class FacultyController: UIViewController {
 		debugPrint("student: \(String(describing: signedInStudent))")
 		setDataModel()
 
+		designViews(view: titleView)
+		designViews(view: profileButtonView)
+		designViews(view: filterButtonView)
+		designViews(view: shadowCollectionView)
+		designLabels(view: titleLabel)
+
 		facultyCollectionView.register(UINib(nibName: "FacultyCell", bundle: nil), forCellWithReuseIdentifier: "FacultyCell")
 
 		facultyCollectionView.delegate = self
 		facultyCollectionView.dataSource = self
-
-		designView()
 
 		facultyCollectionView.reloadData()
     }
@@ -74,15 +78,16 @@ class FacultyController: UIViewController {
 		facultyCollectionView.reloadData()
     }
 
-	//MARK: - MyProfile Button Actions
+	//MARK: - Profile Button Actions
 	@IBAction func didTapMyProfileButton(_ sender: Any) {
 
 		let studentStoryboard = UIStoryboard(name: "Student", bundle: nil)
 		let studentController = studentStoryboard.instantiateViewController(withIdentifier: "StudentController") as! StudentController
 
 		studentController.signedInStudent = self.signedInStudent
-		studentController.newAllCourses = self.newAllCourses
-		navigationController?.pushViewController(studentController, animated: true)
+		studentController.studentCurrentCourse = self.studentCurrentCourse
+		studentController.studentCompletedCourses = self.studentCompletedCourses
+		navigationController?.pushViewController(studentController, animated: false)
 	}
 
 	//MARK: - Filter Button Actions
@@ -97,7 +102,7 @@ class FacultyController: UIViewController {
 		filterController.typeFilterFacultyValues = self.typeFilterFacultyValues
 		filterController.savedTimeFilterFacultyValues = self.savedTimeFilterFacultyValues
 		filterController.savedTypeFilterFacultyValues = self.savedTypeFilterFacultyValues
-		navigationController?.pushViewController(filterController, animated: true)
+		navigationController?.pushViewController(filterController, animated: false)
 	}
 }
 
@@ -150,7 +155,7 @@ extension FacultyController: UICollectionViewDelegate, UICollectionViewDataSourc
 		debugPrint("signedInStudent: \(String(describing: self.signedInStudent))")
 		coursesController.timeFilterFacultyValues = self.timeFilterFacultyValues
 		debugPrint("timeFilterFacultyValues: \(timeFilterFacultyValues)")
-		navigationController?.pushViewController(coursesController, animated: true)
+		navigationController?.pushViewController(coursesController, animated: false)
 	}
 }
 
@@ -171,48 +176,58 @@ extension FacultyController {
 	}
 }
 
+//MARK: - Design UI Extension
 extension FacultyController {
-	func designView() {
 
-		// set the titleView shadow properties
-		titleView.layer.shadowColor = UIColor.black.cgColor
-		titleView.layer.shadowOffset = CGSize(width: 2, height: 2)
-		titleView.layer.shadowOpacity = 1
-		titleView.layer.shadowRadius = 25
+	//MARK: - Design UI
+	func designViews(view: UIView) {
 
-		// set the titleView corner radius
-		titleView.layer.cornerRadius = 7
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
 
-		// set the shadowCollectionView shadow properties
-		shadowCollectionView.layer.shadowColor = UIColor.black.cgColor
-		shadowCollectionView.layer.shadowOffset = CGSize(width: 2, height: 2)
-		shadowCollectionView.layer.shadowOpacity = 1
-		shadowCollectionView.layer.shadowRadius = 25
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.9
+		view.layer.shadowRadius = 3
 
-		// set the round view for image
-		shadowCollectionView.clipsToBounds = true
-		shadowCollectionView.layer.masksToBounds = false
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 7
+	}
 
-		// set the shadowCollectionView corner radius
-		shadowCollectionView.layer.cornerRadius = 7
+	//MARK: - Design Labels
+	func designLabels(view: UIView) {
 
-		// set the filterButtonView shadow properties
-		filterButtonView.layer.shadowColor = UIColor.black.cgColor
-		filterButtonView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-		filterButtonView.layer.shadowOpacity = 0.7
-		filterButtonView.layer.shadowRadius = 3
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
 
-		// set the filterButtonView corner radius
-		filterButtonView.layer.cornerRadius = 7
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.7
+		view.layer.shadowRadius = 0.5
 
-		// set the titleView shadow properties
-		profileButtonView.layer.shadowColor = UIColor.black.cgColor
-		profileButtonView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-		profileButtonView.layer.shadowOpacity = 0.7
-		profileButtonView.layer.shadowRadius = 3
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 0
+	}
 
-		// set the titleView corner radius
-		profileButtonView.layer.cornerRadius = 7
+	//MARK: - Design Icons
+	func designIcons(view: UIView) {
+
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
+
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.4
+		view.layer.shadowRadius = 0.5
+
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 7
 	}
 }
 

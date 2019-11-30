@@ -38,8 +38,7 @@ class CourseOrderController: UIViewController {
 	@IBOutlet weak var privacyLabel: UILabel!
 	@IBOutlet weak var privacyButton: UIButton!
 	@IBOutlet weak var scrollViewSuperViewToSafeAreaBottomConstraint: NSLayoutConstraint!
-	
-	
+
 	//MARK: - Custom variables
 	var privacyValid = false
 	var fullNameFormatValid = false
@@ -58,9 +57,24 @@ class CourseOrderController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 		debugPrint("*********** CourseOrder viewDidLoad  **************")
+		designViews(view: titleView)
+		designViews(view: backButtonView)
+		designViews(view: shadowScrollView)
+		designViews(view: emailTextField)
+		designViews(view: fullNameTextField)
+		designViews(view: phoneTextField)
+		designViews(view: commentsView)
+		designViews(view: buyButtonView)
+		designLabels(view: titleLabel)
+		designLabels(view: fullNameLabel)
+		designLabels(view: emailLabel)
+		designLabels(view: phoneLabel)
+		designLabels(view: commentLabel)
+		designLabels(view: privacyLabel)
+		textFieldInsetText()
+
 		debugPrint("student: \(String(describing: signedInStudent))")
 		privacyImageView.image = UIImage(named: name.privacyOff)
-		designView()
 
 		let keyboardHide = UITapGestureRecognizer(target: self, action: #selector(keyboardWillHide))
 		view.addGestureRecognizer(keyboardHide)
@@ -81,18 +95,19 @@ class CourseOrderController: UIViewController {
 
 	//MARK: - viewWillAppear
 
-	//MARK: - Button Actions
+	//MARK: - Back Button Actions
 	@IBAction func didTapBackButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
 		let viewControllersOfNavigation = navigationController?.viewControllers
 
 		if let controllers = viewControllersOfNavigation {
 			if let courseController = controllers[3] as? CourseController {
-				navigationController?.popToViewController(courseController, animated: true)
+				navigationController?.popToViewController(courseController, animated: false)
 			}
 		}
 	}
 
+	//MARK: - Buy Button Actions
 	@IBAction func didTapBuyButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
 		if privacyValid {
@@ -104,28 +119,27 @@ class CourseOrderController: UIViewController {
 
 					facultyController.signedInStudent = self.signedInStudent
 					facultyController.course = self.course
-					navigationController?.popToViewController(facultyController, animated: true)
+					navigationController?.popToViewController(facultyController, animated: false)
 				}
 			}
 		} else {
-			validationAlert(title: "That's bad that's bad ...", message: "You did not agreed to Our Privacy Policy ...", actionTitle: "Force Unwrap Now!")
+			validationAlert(title: "Wanna Be R' Student ???", message: "You must conform to PPP - our nice Privacy Policy Protocol !!!", actionTitle: "Force Unwrap Now!")
 		}
 
 	}
-	
+
+	//MARK: - Privacy Button Actions
 	@IBAction func didTapConfirmPrivacyButton(_ sender: Any) {
 		privacyValid = !privacyValid
 		if !privacyValid {
 			commentsTextView.text = "your comments ..."
 			privacyImageView.image = UIImage(named: name.privacyOff)
 		} else {
-			commentsTextView.text = "post your funny comments about us on ... ebanoe.it !!!"
+			commentsTextView.text = "Privacy Policy Protocol Conformed !!!  You can now post your funny comments ... on ebanoe.it !!!"
 			privacyImageView.image = UIImage(named: name.privacyOn)
 		}
 	}
 }
-
-//MARK: - Extension
 
 //MARK: - set default Student values Extension
 extension CourseOrderController {
@@ -267,76 +281,77 @@ extension CourseOrderController {
 		present(alertController, animated: true, completion: nil)
 	}
 }
-
-//MARK: - designView Extension
+//MARK: - Design UI Extension
 extension CourseOrderController {
-	func designView() {
 
-		// set the titleView shadow properties
-		titleView.layer.shadowColor = UIColor.black.cgColor
-		titleView.layer.shadowOffset = CGSize(width: 2, height: 2)
-		titleView.layer.shadowOpacity = 1
-		titleView.layer.shadowRadius = 25
+	//MARK: - Design UI
+	func designViews(view: UIView) {
 
-		// set the titleView corner radius
-		titleView.layer.cornerRadius = 7
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
 
-		// set the shadowCollectionView shadow properties
-		shadowScrollView.clipsToBounds = true
-		shadowScrollView.layer.masksToBounds = false
-		shadowScrollView.layer.shadowColor = UIColor.black.cgColor
-		shadowScrollView.layer.shadowOffset = CGSize(width: 2, height: 2)
-		shadowScrollView.layer.shadowOpacity = 1
-		shadowScrollView.layer.shadowRadius = 25
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.9
+		view.layer.shadowRadius = 3
 
-		// set the round view for image
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 7
+	}
 
-		// set the shadowCollectionView corner radius
-		shadowScrollView.layer.cornerRadius = 7
+	//MARK: - Design Labels
+	func designLabels(view: UIView) {
 
-		// set the filterButtonView shadow properties
-		backButtonView.layer.shadowColor = UIColor.black.cgColor
-		backButtonView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-		backButtonView.layer.shadowOpacity = 0.7
-		backButtonView.layer.shadowRadius = 3
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
 
-		fullNameTextField.layer.shadowColor = UIColor.black.cgColor
-		fullNameTextField.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
-		fullNameTextField.layer.shadowOpacity = 0.9
-		fullNameTextField.layer.shadowRadius = 3
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.7
+		view.layer.shadowRadius = 0.5
 
-		emailTextField.layer.shadowColor = UIColor.black.cgColor
-		emailTextField.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
-		emailTextField.layer.shadowOpacity = 0.9
-		emailTextField.layer.shadowRadius = 3
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 0
+	}
 
-		phoneTextField.layer.shadowColor = UIColor.black.cgColor
-		phoneTextField.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
-		phoneTextField.layer.shadowOpacity = 0.9
-		phoneTextField.layer.shadowRadius = 3
+	//MARK: - Design Icons
+	func designIcons(view: UIView) {
 
-		commentsView.clipsToBounds = true
-		commentsView.layer.masksToBounds = false
-		commentsView.layer.shadowColor = UIColor.black.cgColor
-		commentsView.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
-		commentsView.layer.shadowOpacity = 0.9
-		commentsView.layer.shadowRadius = 3
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
 
-		// set the filterButtonView corner radius
-		backButtonView.layer.cornerRadius = 7
-		fullNameTextField.layer.cornerRadius = 7
-		emailTextField.layer.cornerRadius = 7
-		phoneTextField.layer.cornerRadius = 7
-		commentsView.layer.cornerRadius = 7
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.4
+		view.layer.shadowRadius = 0.5
 
-		// set the filterButtonView shadow properties
-		buyButtonView.layer.shadowColor = UIColor.black.cgColor
-		buyButtonView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-		buyButtonView.layer.shadowOpacity = 0.7
-		buyButtonView.layer.shadowRadius = 3
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 7
+	}
 
-		// set the filterButtonView corner radius
-		buyButtonView.layer.cornerRadius = 7
+	//MARK: - Design textFields
+	func designtextFields(view: UIView) {
+
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.4
+		view.layer.shadowRadius = 0.5
+
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 7
+	}
+}
+
+//MARK: - textField inset text Extension
+extension CourseOrderController {
+	func textFieldInsetText() {
 
 		fullNameTextField.setLeftPaddingPoints(10)
 		fullNameTextField.setRightPaddingPoints(10)

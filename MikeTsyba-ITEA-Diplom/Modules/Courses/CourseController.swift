@@ -29,8 +29,6 @@ class CourseController: UIViewController {
 	@IBOutlet weak var skillsLabel: UILabel!
 	@IBOutlet weak var moreInfoButton: UIButton!
 
-
-
 	//MARK: - Custom variables
 
 	//transfer data
@@ -38,10 +36,18 @@ class CourseController: UIViewController {
 	var signedInStudent: Student?
 	
 	//MARK: - viewDidLoad
-
     override func viewDidLoad() {
         super.viewDidLoad()
 		debugPrint("*********** Course viewDidLoad  **************")
+		designViews(view: titleView)
+		designViews(view: buyButtonView)
+		designViews(view: backButtonView)
+		designViews(view: shadowScrollView)
+		designViews(view: moreInfoButton)
+		designLabels(view: titleLabel)
+		designLabels(view: descriptionLabel)
+		designLabels(view: skillsLabel)
+
 		debugPrint("student: \(String(describing: signedInStudent))")
 
 		if let item = course {
@@ -49,14 +55,11 @@ class CourseController: UIViewController {
 			descriptionLabel.text = item.description
 			skillsLabel.text = item.skills
 		}
-
-		designView()
     }
 
 	//MARK: - viewWillAppear
-	
 
-	//MARK: - Button Actions
+	//MARK: - MoreInfo Button Actions
 	@IBAction func didTapMoreInfoButton(_ sender: Any) {
 		debugPrint("*********** tap info  **************")
 		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
@@ -65,20 +68,22 @@ class CourseController: UIViewController {
 		courseDetailsController.course = self.course
 
 		debugPrint("course: \(String(describing: course))")
-		navigationController?.pushViewController(courseDetailsController, animated: true)
+		navigationController?.pushViewController(courseDetailsController, animated: false)
 	}
 
+	//MARK: - Back Button Actions
 	@IBAction func didTapBackButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
 		let viewControllersOfNavigation = navigationController?.viewControllers
 
 		if let controllers = viewControllersOfNavigation {
 			if let coursesController = controllers[2] as? CoursesController {
-				navigationController?.popToViewController(coursesController, animated: true)
+				navigationController?.popToViewController(coursesController, animated: false)
 			}
 		}
 	}
 
+	//MARK: - Buy Button Actions
 	@IBAction func didTapBuyButton(_ sender: Any) {
 		debugPrint("*********** tap order  **************")
 		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
@@ -89,52 +94,61 @@ class CourseController: UIViewController {
 
 		debugPrint("signedInStudent: \(String(describing: signedInStudent))")
 		debugPrint("course: \(String(describing: course))")
-		navigationController?.pushViewController(courseOrderController, animated: true)
+		navigationController?.pushViewController(courseOrderController, animated: false)
 	}
 }
 
-//MARK: - designView Extension
+//MARK: - Design UI Extension
 extension CourseController {
-	func designView() {
 
-		// set the titleView shadow properties
-		titleView.layer.shadowColor = UIColor.black.cgColor
-		titleView.layer.shadowOffset = CGSize(width: 2, height: 2)
-		titleView.layer.shadowOpacity = 1
-		titleView.layer.shadowRadius = 25
+	//MARK: - Design UI
+	func designViews(view: UIView) {
 
-		// set the titleView corner radius
-		titleView.layer.cornerRadius = 7
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
 
-		// set the shadowCollectionView shadow properties
-		shadowScrollView.layer.shadowColor = UIColor.black.cgColor
-		shadowScrollView.layer.shadowOffset = CGSize(width: 2, height: 2)
-		shadowScrollView.layer.shadowOpacity = 1
-		shadowScrollView.layer.shadowRadius = 25
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.9
+		view.layer.shadowRadius = 3
 
-		// set the round view for image
-		shadowScrollView.clipsToBounds = true
-		shadowScrollView.layer.masksToBounds = false
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 7
+	}
 
-		// set the shadowCollectionView corner radius
-		shadowScrollView.layer.cornerRadius = 7
+	//MARK: - Design Labels
+	func designLabels(view: UIView) {
 
-		// set the filterButtonView shadow properties
-		backButtonView.layer.shadowColor = UIColor.black.cgColor
-		backButtonView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-		backButtonView.layer.shadowOpacity = 0.7
-		backButtonView.layer.shadowRadius = 3
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
 
-		// set the filterButtonView corner radius
-		backButtonView.layer.cornerRadius = 7
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.7
+		view.layer.shadowRadius = 0.5
 
-		// set the filterButtonView shadow properties
-		buyButtonView.layer.shadowColor = UIColor.black.cgColor
-		buyButtonView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-		buyButtonView.layer.shadowOpacity = 0.7
-		buyButtonView.layer.shadowRadius = 3
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 0
+	}
 
-		// set the filterButtonView corner radius
-		buyButtonView.layer.cornerRadius = 7
+	//MARK: - Design Icons
+	func designIcons(view: UIView) {
+
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
+
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.4
+		view.layer.shadowRadius = 0.5
+
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 7
 	}
 }

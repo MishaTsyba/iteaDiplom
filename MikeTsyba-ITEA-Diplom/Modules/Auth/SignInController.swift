@@ -51,9 +51,17 @@ class SignInController: UIViewController {
 	//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-		//designView()
-		designUI(view: logoView)
 		makeStudent()
+		designViews(view: logoView)
+		designViews(view: signInView)
+		designViews(view: emailView)
+		designViews(view: passwordView)
+		designViews(view: signInButtonView)
+		designLabels(view: titleLabel)
+		designIcons(view: logoImageView)
+		designIcons(view: emailImageView)
+		designIcons(view: passwordImageView)
+
 
 		let keyboardHide = UITapGestureRecognizer(target: self, action: #selector(keyboardWillHide))
 		view.addGestureRecognizer(keyboardHide)
@@ -83,7 +91,7 @@ class SignInController: UIViewController {
 			let facultyController = coursesStoryboard.instantiateViewController(withIdentifier: "FacultyController") as! FacultyController
 
 			facultyController.signedInStudent = self.signedInStudent
-			navigationController?.pushViewController(facultyController, animated: true)
+			navigationController?.pushViewController(facultyController, animated: false)
 		}
 	}
 }
@@ -216,11 +224,11 @@ extension SignInController {
 	}
 }
 
-//MARK: - Design Views Extension
+//MARK: - Design UI Extension
 extension SignInController {
 
 	//MARK: - Design UI
-	func designUI(view: UIView) {
+	func designViews(view: UIView) {
 
 		//MARK: - set view properties
 		view.clipsToBounds = true
@@ -231,6 +239,40 @@ extension SignInController {
 		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
 		view.layer.shadowOpacity = 0.9
 		view.layer.shadowRadius = 3
+
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 7
+	}
+
+	//MARK: - Design Labels
+	func designLabels(view: UIView) {
+
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
+
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.7
+		view.layer.shadowRadius = 0.5
+
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 0
+	}
+
+	//MARK: - Design Icons
+	func designIcons(view: UIView) {
+
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
+
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.4
+		view.layer.shadowRadius = 0.5
 
 		//MARK: - set view corner radius
 		view.layer.cornerRadius = 7

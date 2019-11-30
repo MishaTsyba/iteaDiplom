@@ -37,14 +37,18 @@ class CoursesController: UIViewController {
 	var signedInStudent: Student?
 
 	//output data
-	var course: Course?
+	var course: NewCourse?
 
 	//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 		debugPrint("*********** Courses viewDidLoad  **************")
+		designViews(view: titleView)
+		designViews(view: backButtonView)
+		designViews(view: shadowCourseView)
+		designLabels(view: titleViewLabel)
+
 		debugPrint("student: \(String(describing: signedInStudent))")
-		designView()
 		courseTableView.register(UINib(nibName: "CourseCell", bundle: nil), forCellReuseIdentifier: "CourseCell")
 		courseTableView.reloadData()
     }
@@ -75,7 +79,7 @@ class CoursesController: UIViewController {
 		courseTableView.reloadData()
     }
 
-	//MARK: - Button Actions
+	//MARK: - Back Button Actions
 	@IBAction func didTapBackButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
 		let viewControllersOfNavigation = navigationController?.viewControllers
@@ -83,13 +87,11 @@ class CoursesController: UIViewController {
 		if let controllers = viewControllersOfNavigation {
 
 			if let facultyController = controllers[1] as? FacultyController {
-				navigationController?.popToViewController(facultyController, animated: true)
+				navigationController?.popToViewController(facultyController, animated: false)
 			}
 		}
 	}
 }
-
-//MARK: - Extension
 
 //MARK: - TableView Delegate Extension
 extension CoursesController: UITableViewDelegate, UITableViewDataSource {
@@ -122,7 +124,7 @@ extension CoursesController: UITableViewDelegate, UITableViewDataSource {
 
 		debugPrint("course: \(filteredFacultyCourses[indexPath.row])")
 		debugPrint("signedInStudent: \(String(describing: signedInStudent))")
-		navigationController?.pushViewController(courseController, animated: true)
+		navigationController?.pushViewController(courseController, animated: false)
 	}
 
 }
@@ -151,43 +153,7 @@ extension CoursesController {
 		}
 	}
 }
-
-extension CoursesController {
-	func designView() {
-
-		// set the titleView shadow properties
-		titleView.layer.shadowColor = UIColor.black.cgColor
-		titleView.layer.shadowOffset = CGSize(width: 2, height: 2)
-		titleView.layer.shadowOpacity = 1
-		titleView.layer.shadowRadius = 25
-
-		// set the titleView corner radius
-		titleView.layer.cornerRadius = 7
-
-		// set the shadowCollectionView shadow properties
-		shadowCourseView.layer.shadowColor = UIColor.black.cgColor
-		shadowCourseView.layer.shadowOffset = CGSize(width: 2, height: 2)
-		shadowCourseView.layer.shadowOpacity = 1
-		shadowCourseView.layer.shadowRadius = 25
-
-		// set the round view for image
-		shadowCourseView.clipsToBounds = true
-		shadowCourseView.layer.masksToBounds = false
-
-		// set the shadowCollectionView corner radius
-		shadowCourseView.layer.cornerRadius = 7
-
-		// set the filterButtonView shadow properties
-		backButtonView.layer.shadowColor = UIColor.black.cgColor
-		backButtonView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-		backButtonView.layer.shadowOpacity = 0.7
-		backButtonView.layer.shadowRadius = 3
-
-		// set the filterButtonView corner radius
-		backButtonView.layer.cornerRadius = 7
-	}
-}
-
+//MARK: - Alert extension
 extension CoursesController {
 	func noCoursesAlert() {
 		let alertController = UIAlertController(title: "Sorry", message: "No available Courses this time", preferredStyle: .alert)
@@ -200,5 +166,60 @@ extension CoursesController {
 		alertController.addAction(cancelFirst)
 
 		present(alertController, animated: true, completion: nil)
+	}
+}
+
+//MARK: - Design UI Extension
+extension CoursesController {
+
+	//MARK: - Design UI
+	func designViews(view: UIView) {
+
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
+
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.9
+		view.layer.shadowRadius = 3
+
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 7
+	}
+
+	//MARK: - Design Labels
+	func designLabels(view: UIView) {
+
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
+
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.7
+		view.layer.shadowRadius = 0.5
+
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 0
+	}
+
+	//MARK: - Design Icons
+	func designIcons(view: UIView) {
+
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
+
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.4
+		view.layer.shadowRadius = 0.5
+
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 7
 	}
 }

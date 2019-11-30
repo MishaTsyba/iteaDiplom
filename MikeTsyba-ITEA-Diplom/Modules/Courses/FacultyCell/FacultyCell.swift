@@ -24,8 +24,8 @@ class FacultyCell: UICollectionViewCell {
 
 			// set the shadow properties
 			shadowView.layer.shadowColor = UIColor.black.cgColor
-		shadowView.layer.shadowOffset = CGSize(width: 2, height: 2)
-		shadowView.layer.shadowOpacity = 1
+			shadowView.layer.shadowOffset = CGSize(width: 2, height: 2)
+			shadowView.layer.shadowOpacity = 1
 			shadowView.layer.shadowRadius = 3
 
 			// set the corner radius
@@ -42,6 +42,7 @@ class FacultyCell: UICollectionViewCell {
 
 	}
 
+	//MARK: - Outlet variables
 	extension FacultyCell {
 		func update(faculty: NewFaculty) {
 			cellTitleLabel.text = faculty.name
