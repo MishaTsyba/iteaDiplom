@@ -29,7 +29,7 @@ class CourseDetailesController: UIViewController {
 	//MARK: - Custom variables
 
 	//input data
-	var course: Course?
+	var course: NewCourse?
 	
 	//MARK: - viewDidLoad
 
@@ -38,23 +38,10 @@ class CourseDetailesController: UIViewController {
 		designView()
 
 		if let item = course {
-			if let courseName = item.name {
-				titleLabel.text = courseName
-			}
+			titleLabel.text = item.name
+			programLabel.text = item.program
+			requirementsLabel.text = item.requirements
 		}
-
-		if let item = course {
-			if let courseProgram = item.program {
-				programLabel.text = courseProgram
-			}
-		}
-
-		if let item = course {
-			if let courserequirements = item.requirements {
-				requirementsLabel.text = courserequirements
-			}
-		}
-
     }
 
 	//MARK: - viewWillAppear

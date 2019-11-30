@@ -34,7 +34,7 @@ extension CourseCell {
 }
 
 extension CourseCell {
-	func update(course: Course) {
-		courseLabel.text = course.name ?? "No Courses"
+	func update(course: NewCourse) {
+		courseLabel.text = course.name
 	}
 }

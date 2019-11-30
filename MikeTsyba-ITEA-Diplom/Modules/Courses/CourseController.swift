@@ -34,7 +34,7 @@ class CourseController: UIViewController {
 	//MARK: - Custom variables
 
 	//transfer data
-	var course: Course?
+	var course: NewCourse?
 	var signedInStudent: Student?
 	
 	//MARK: - viewDidLoad
@@ -45,21 +45,9 @@ class CourseController: UIViewController {
 		debugPrint("student: \(String(describing: signedInStudent))")
 
 		if let item = course {
-			if let courseName = item.name {
-				titleLabel.text = courseName
-			}
-		}
-
-		if let item = course {
-			if let courseDescription = item.description {
-				descriptionLabel.text = courseDescription
-			}
-		}
-
-		if let item = course {
-			if let courseSkills = item.skills {
-				skillsLabel.text = courseSkills
-			}
+			titleLabel.text = item.name
+			descriptionLabel.text = item.description
+			skillsLabel.text = item.skills
 		}
 
 		designView()

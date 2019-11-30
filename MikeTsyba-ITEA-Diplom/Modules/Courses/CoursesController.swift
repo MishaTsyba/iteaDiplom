@@ -23,14 +23,15 @@ class CoursesController: UIViewController {
 	@IBOutlet weak var courseTableView: UITableView!
 	
 	//MARK: - Custom variables
+	let time = Time()
 
 	//input data
-	var selectedFaculty: Faculty?
-	var allCourses: [Course]?
+	var selectedFaculty: NewFaculty?
+	var newAllCourses: [NewCourse]?
 	var timeFilterFacultyValues = [String]()
 
 	//displayed data
-	var filteredFacultyCourses = [Course]()
+	var filteredFacultyCourses = [NewCourse]()
 
 	//transfer data
 	var signedInStudent: Student?
@@ -58,7 +59,7 @@ class CoursesController: UIViewController {
 		debugPrint("selectedFaculty: \(String(describing: self.selectedFaculty))")
 		debugPrint("selectedFaculty: \(String(describing: selectedFaculty?.name)))")
 		debugPrint("selectedFaculty: \(String(describing: selectedFaculty?.imageName))")
-		debugPrint("allCourses: \(String(describing: self.allCourses))")
+		debugPrint("allCourses: \(String(describing: self.newAllCourses))")
 		debugPrint("filteredFacultyCourses: \(String(describing: filteredFacultyCourses))")
 
 		debugPrint("*********** courses Time Filtering  **************")
@@ -68,9 +69,7 @@ class CoursesController: UIViewController {
 		}
 
 		if let faculty = selectedFaculty {
-			if let facultyName = faculty.name {
-				titleViewLabel.text = facultyName
-			}
+			titleViewLabel.text = faculty.name
 		}
 
 		courseTableView.reloadData()
@@ -130,32 +129,20 @@ extension CoursesController: UITableViewDelegate, UITableViewDataSource {
 
 //MARK: - Filter Courses extension
 extension CoursesController {
-
 	func makeFilteredCourses() {
-		if let faculty = selectedFaculty {
-			if let facultyName = faculty.name {
-				debugPrint("facultyName: \(facultyName)")
-				if let courses = allCourses {
-					for course in courses {
-						if let courseFaculty = course.faculty {
-							if courseFaculty == facultyName {
-								if timeFilterFacultyValues.isEmpty {
-									filteredFacultyCourses.append(course)
-								} else if timeFilterFacultyValues.contains("Day") {
-									if let courseDay = course.day {
-										if courseDay == "Day" {
-											filteredFacultyCourses.append(course)
-										}
-									}
-								} else if timeFilterFacultyValues.contains("Evening") {
-									if let courseEvening = course.evening {
-										if courseEvening == "Evening" {
-											filteredFacultyCourses.append(course)
-										}
-									}
-								} else {
-									timeFilterFacultyValues = []
-								}
+		if let newFaculty = selectedFaculty {
+			if let newCourses = newAllCourses {
+				for newCourse in newCourses {
+					if newCourse.faculty == newFaculty.name {
+						if timeFilterFacultyValues.isEmpty {
+							filteredFacultyCourses.append(newCourse)
+						} else if timeFilterFacultyValues.contains(time.day) {
+							if newCourse.time == time.day {
+								filteredFacultyCourses.append(newCourse)
+							}
+						} else if timeFilterFacultyValues.contains(time.evening) {
+							if newCourse.time == time.evening {
+								filteredFacultyCourses.append(newCourse)
 							}
 						}
 					}

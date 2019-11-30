@@ -78,7 +78,11 @@ class FilterController: UIViewController {
 	//MARK: - Custom variables
 	//input data
 	var newAllCatehdrals = [NewCatehdral]()
-	
+
+	//init data
+	let name = Name()
+	let time = Time()
+
 	//output data
 	var timeFilterFacultyValues = [String]()
 	var typeFilterFacultyValues = [String]()
@@ -115,7 +119,7 @@ class FilterController: UIViewController {
 	@IBAction func didTapDayFilterButton(_ sender: Any) {
 		debugPrint("*********** tap start  **************")
 		timeFilterFacultyValues = []
-		timeFilterFacultyValues.append("Day")
+		timeFilterFacultyValues.append(time.day)
 		debugPrint("*********** tap end  **************")
 		for filter in timeFilterFacultyValues {
 			debugPrint("\(filter)")
@@ -129,7 +133,7 @@ class FilterController: UIViewController {
 	@IBAction func didTapEveningFilterButton(_ sender: Any) {
 		debugPrint("*********** tap start  **************")
 		timeFilterFacultyValues = []
-		timeFilterFacultyValues.append("Evening")
+		timeFilterFacultyValues.append(time.evening)
 		debugPrint("*********** tap end  **************")
 		for filter in timeFilterFacultyValues {
 			debugPrint("\(filter)")
@@ -143,7 +147,7 @@ class FilterController: UIViewController {
 	@IBAction func didTapAllTypesFilterButton(_ sender: Any) {
 		debugPrint("*********** tap start  **************")
 		typeFilterFacultyValues = []
-		typeFilterFacultyValues.append("All Types")
+		typeFilterFacultyValues.append(name.allTypes)
 		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
 		debugPrint("*********** tap end  **************")
 		for filter in typeFilterFacultyValues {
@@ -157,7 +161,7 @@ class FilterController: UIViewController {
 	@IBAction func didTapMobDevFilterButton(_ sender: Any) {
 		debugPrint("*********** tap start  **************")
 		typeFilterFacultyValues = []
-		typeFilterFacultyValues.append("Mobile Development")
+		typeFilterFacultyValues.append(name.mobDev)
 		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
 		debugPrint("*********** tap end  **************")
 		for filter in typeFilterFacultyValues {
@@ -171,7 +175,7 @@ class FilterController: UIViewController {
 	@IBAction func didTapFeDevFilterButton(_ sender: Any) {
 		debugPrint("*********** tap start  **************")
 		typeFilterFacultyValues = []
-		typeFilterFacultyValues.append("Front End Development")
+		typeFilterFacultyValues.append(name.feDev)
 		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
 		debugPrint("*********** tap end  **************")
 		for filter in typeFilterFacultyValues {
@@ -185,7 +189,7 @@ class FilterController: UIViewController {
 	@IBAction func didTapDesignFilterButton(_ sender: Any) {
 		debugPrint("*********** tap start  **************")
 		typeFilterFacultyValues = []
-		typeFilterFacultyValues.append("Design")
+		typeFilterFacultyValues.append(name.design)
 		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
 		debugPrint("*********** tap end  **************")
 		for filter in typeFilterFacultyValues {
@@ -199,7 +203,7 @@ class FilterController: UIViewController {
 	@IBAction func didTapProgrammingFilterButton(_ sender: Any) {
 		debugPrint("*********** tap start  **************")
 		typeFilterFacultyValues = []
-		typeFilterFacultyValues.append("Programming")
+		typeFilterFacultyValues.append(name.programming)
 		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
 		debugPrint("*********** tap end  **************")
 		for filter in typeFilterFacultyValues {
@@ -213,7 +217,7 @@ class FilterController: UIViewController {
 	@IBAction func didTapQaFilterButton(_ sender: Any) {
 		debugPrint("*********** tap start  **************")
 		typeFilterFacultyValues = []
-		typeFilterFacultyValues.append("QA")
+		typeFilterFacultyValues.append(name.qa)
 		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
 		debugPrint("*********** tap end  **************")
 		for filter in typeFilterFacultyValues {
@@ -227,7 +231,7 @@ class FilterController: UIViewController {
 	@IBAction func didTapOtherFilterButton(_ sender: Any) {
 		debugPrint("*********** tap start  **************")
 		typeFilterFacultyValues = []
-		typeFilterFacultyValues.append("Other")
+		typeFilterFacultyValues.append(name.other)
 		toggleTypeFilter(typeFilter: typeFilterFacultyValues)
 		debugPrint("*********** tap end  **************")
 		for filter in typeFilterFacultyValues {
@@ -273,67 +277,67 @@ class FilterController: UIViewController {
 extension FilterController {
 	func toggleTimeFilter(timeFilter: [String]) {
 
-		if timeFilter.contains("Day") {
-			dayCircleImageView.image = UIImage(named: "checked")
+		if timeFilter.contains(time.day) {
+			dayCircleImageView.image = UIImage(named: name.filterOn)
 		} else {
-			dayCircleImageView.image = UIImage(named: "unChecked")
+			dayCircleImageView.image = UIImage(named: name.filterOff)
 		}
 
-		if timeFilter.contains("Evening") {
-			eveningCircleImageView.image = UIImage(named: "checked")
+		if timeFilter.contains(time.evening) {
+			eveningCircleImageView.image = UIImage(named: name.filterOn)
 		} else {
-			eveningCircleImageView.image = UIImage(named: "unChecked")
+			eveningCircleImageView.image = UIImage(named: name.filterOff)
 		}
 	}
 
 	func toggleTypeFilter(typeFilter: [String]) {
 
-		if typeFilter.contains("All Types") {
-			allTypesCircleImageView.image = UIImage(named: "checked")
+		if typeFilter.contains(name.allTypes) {
+			allTypesCircleImageView.image = UIImage(named: name.filterOn)
 		} else {
-			allTypesCircleImageView.image = UIImage(named: "unChecked")
+			allTypesCircleImageView.image = UIImage(named: name.filterOff)
 		}
 
-		if typeFilter.contains("Mobile Development") {
-			mobDevCircleImageView.image = UIImage(named: "checked")
+		if typeFilter.contains(name.mobDev) {
+			mobDevCircleImageView.image = UIImage(named: name.filterOn)
 		} else {
-			mobDevCircleImageView.image = UIImage(named: "unChecked")
+			mobDevCircleImageView.image = UIImage(named: name.filterOff)
 		}
 
-		if typeFilter.contains("Front End Development") {
-			feDevCircleImageView.image = UIImage(named: "checked")
+		if typeFilter.contains(name.feDev) {
+			feDevCircleImageView.image = UIImage(named: name.filterOn)
 		} else {
-			feDevCircleImageView.image = UIImage(named: "unChecked")
+			feDevCircleImageView.image = UIImage(named: name.filterOff)
 		}
 
-		if typeFilter.contains("Design") {
-			designCircleImageView.image = UIImage(named: "checked")
+		if typeFilter.contains(name.design) {
+			designCircleImageView.image = UIImage(named: name.filterOn)
 		} else {
-			designCircleImageView.image = UIImage(named: "unChecked")
+			designCircleImageView.image = UIImage(named: name.filterOff)
 		}
 
-		if typeFilter.contains("Programming") {
-			programmingCircleImageView.image = UIImage(named: "checked")
+		if typeFilter.contains(name.programming) {
+			programmingCircleImageView.image = UIImage(named: name.filterOn)
 		} else {
-			programmingCircleImageView.image = UIImage(named: "unChecked")
+			programmingCircleImageView.image = UIImage(named: name.filterOff)
 		}
 
-		if typeFilter.contains("QA") {
-			qaCircleImageView.image = UIImage(named: "checked")
+		if typeFilter.contains(name.qa) {
+			qaCircleImageView.image = UIImage(named: name.filterOn)
 		} else {
-			qaCircleImageView.image = UIImage(named: "unChecked")
+			qaCircleImageView.image = UIImage(named: name.filterOff)
 		}
 
-		if typeFilter.contains("Other") {
-			otherCircleImageView.image = UIImage(named: "checked")
+		if typeFilter.contains(name.other) {
+			otherCircleImageView.image = UIImage(named: name.filterOn)
 		} else {
-			otherCircleImageView.image = UIImage(named: "unChecked")
+			otherCircleImageView.image = UIImage(named: name.filterOff)
 		}
 
-		if typeFilter.contains("All Types") {
-			allTypesCircleImageView.image = UIImage(named: "checked")
+		if typeFilter.contains(name.allTypes) {
+			allTypesCircleImageView.image = UIImage(named: name.filterOn)
 		} else {
-			allTypesCircleImageView.image = UIImage(named: "unChecked")
+			allTypesCircleImageView.image = UIImage(named: name.filterOff)
 		}
 	}
 }
@@ -341,15 +345,15 @@ extension FilterController {
 //MARK: - Extension make filter Names
 extension FilterController {
 	func makeFilterNames() {
-		dayFilterLabel.text = "Day"
-		eveningFilterLabel.text = "Evening"
-		allTypesFilterLabel.text = "All Types"
-		mobDevFilterLabel.text = "Mobile Development"
-		feDevFilterLabel.text = "Front End Development"
-		designFilterLabel.text = "Design"
-		programmingFilterLabel.text = "Programming"
-		qaFilterLabel.text = "QA"
-		otherFilterLabel.text = "Other"
+		dayFilterLabel.text = time.day
+		eveningFilterLabel.text = time.evening
+		allTypesFilterLabel.text = name.allTypes
+		mobDevFilterLabel.text = name.mobDev
+		feDevFilterLabel.text = name.feDev
+		designFilterLabel.text = name.design
+		programmingFilterLabel.text = name.programming
+		qaFilterLabel.text = name.qa
+		otherFilterLabel.text = name.other
 	}
 }
 

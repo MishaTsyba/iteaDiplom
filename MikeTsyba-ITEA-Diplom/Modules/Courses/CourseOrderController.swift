@@ -45,9 +45,10 @@ class CourseOrderController: UIViewController {
 	var fullNameFormatValid = false
 	var emailFormatValid = false
 	var phoneFormatValid = false
+	let name = Name()
 
 	//input data
-	var course: Course?
+	var course: NewCourse?
 	
 	//input displayed processed output
 	var signedInStudent: Student?
@@ -58,6 +59,7 @@ class CourseOrderController: UIViewController {
         super.viewDidLoad()
 		debugPrint("*********** CourseOrder viewDidLoad  **************")
 		debugPrint("student: \(String(describing: signedInStudent))")
+		privacyImageView.image = UIImage(named: name.privacyOff)
 		designView()
 
 		let keyboardHide = UITapGestureRecognizer(target: self, action: #selector(keyboardWillHide))
@@ -71,11 +73,9 @@ class CourseOrderController: UIViewController {
 		setDefaultStudentValues()
 
 		if let item = course {
-			if let courseName = item.name {
-				let motto = "Take " + courseName + "!"
-				titleLabel.text = motto
-				buyButton.setTitle(motto, for: .normal)
-			}
+			let motto = "Take " + item.name + "!"
+			titleLabel.text = motto
+			buyButton.setTitle(motto, for: .normal)
 		}
     }
 
@@ -117,10 +117,10 @@ class CourseOrderController: UIViewController {
 		privacyValid = !privacyValid
 		if !privacyValid {
 			commentsTextView.text = "your comments ..."
-			privacyImageView.image = UIImage(named: "checkBoxUnChecked")
+			privacyImageView.image = UIImage(named: name.privacyOff)
 		} else {
 			commentsTextView.text = "post your funny comments about us on ... ebanoe.it !!!"
-			privacyImageView.image = UIImage(named: "checkBoxChecked")
+			privacyImageView.image = UIImage(named: name.privacyOn)
 		}
 	}
 }

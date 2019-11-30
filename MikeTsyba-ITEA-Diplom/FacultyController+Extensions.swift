@@ -12,12 +12,10 @@ extension FacultyController {
 	func setDataModel() {
 
 		//MARK: - Make Initial Data Objects
-		let name = Name()
 		let description = Description()
 		let skills = Skills()
 		let program = Program()
 		let requirements = Requirements()
-		let time = Time()
 
 		//MARK: - Make Catehdral Objects
 		let allCathedrals = NewCatehdral(name: name.allTypes)

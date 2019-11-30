@@ -62,4 +62,8 @@ class Name {
 	var dmImage = "dm"
 	var pmImage = "pm"
 	var gpImage = "gp"
+	var filterOn = "filterOn"
+	var filterOff = "filterOff"
+	var privacyOn = "privacyOn"
+	var privacyOff = "privacyOff"
 }

@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "progCountur.png",
+      "filename" : "filterOff.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "progCountur@2x.png",
+      "filename" : "filterOff@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "progCountur@3x.png",
+      "filename" : "filterOff@3x.png",
       "scale" : "3x"
     }
   ],

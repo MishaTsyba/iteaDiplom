@@ -43,8 +43,8 @@ class FacultyCell: UICollectionViewCell {
 	}
 
 	extension FacultyCell {
-		func update(faculty: Faculty) {
+		func update(faculty: NewFaculty) {
 			cellTitleLabel.text = faculty.name
-			cellPhotoImageView.image = UIImage(named: faculty.imageName ?? "")
+			cellPhotoImageView.image = UIImage(named: faculty.imageName)
 		}
 	}

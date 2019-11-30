@@ -36,7 +36,6 @@ class SignInController: UIViewController {
 	@IBOutlet weak var signInButtonView: UIView!
 	@IBOutlet weak var signInButton: UIButton!
 	@IBOutlet weak var scrollViewToSafeAreaBottomConstraint: NSLayoutConstraint!
-	
 
 	//MARK: - Custom variables
 	var emailFormatValid = false
@@ -46,15 +45,14 @@ class SignInController: UIViewController {
 	var userEmailValid = false
 	var userPasswordValid = false
 
-	//input data
-
 	//output data
 	var signedInStudent: Student?
 
 	//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-		designView()
+		//designView()
+		designUI(view: logoView)
 		makeStudent()
 
 		let keyboardHide = UITapGestureRecognizer(target: self, action: #selector(keyboardWillHide))
@@ -75,8 +73,8 @@ class SignInController: UIViewController {
 		userEmailValid = false
 		userPasswordValid = false
 	}
-	//MARK: - Button Actions
 
+	//MARK: - Button Sign In Actions
 	@IBAction func didTapSignInButton(_ sender: Any) {
 		validateUserInfo()
 		if userEmailValid && userPasswordValid {
@@ -110,7 +108,7 @@ extension SignInController: UITextFieldDelegate {
 		return true
 	}
 
-	//validate user data FORMAT input
+	//MARK: - validate user data FORMAT input
 	func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
 
 		debugPrint("ShouldEndEditing")
@@ -123,7 +121,7 @@ extension SignInController: UITextFieldDelegate {
 		return true
 	}
 
-	//go to NEXT TextField
+	//MARK: - go to NEXT TextField
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 
 		debugPrint("ShouldReturn")
@@ -157,7 +155,7 @@ extension SignInController {
 //MARK: - Validate Input Format AND Data Extension
 extension SignInController {
 
-	//validate EMAIL FORMAT
+	//MARK: - validate EMAIL FORMAT
 	func validateEmailFormat() {
 		if let enteredEmailValue = emailTextField.text {
 			//validate EMAIL EMPTY or WITHOUT @
@@ -171,7 +169,7 @@ extension SignInController {
 		}
 	}
 
-	//validate PASSWORD FORMAT
+	//MARK: - validate PASSWORD FORMAT
 	func validatePasswordFormat() {
 		if let enteredPasswordValue = passwordTextField.text {
 			//validate 6 < PASSWORD < 15 or EMPTY
@@ -185,7 +183,7 @@ extension SignInController {
 		}
 	}
 
-	//validate User Input Data
+	//MARK: - validate User Input Data
 	func validateUserInfo() {
 		debugPrint("******* validateUserInfo ********")
 		if let student = signedInStudent {
@@ -211,6 +209,8 @@ extension SignInController {
 
 //MARK: - Make Student extension
 extension SignInController {
+
+	//MARK: - makeStudent
 	func makeStudent() {
 		signedInStudent = Student(firstName: "Mike", lastName: "Tsyba", age: "41", city: "Kiev", birthday: "09-04-1978", phone: "+380503387901", workPlace: "Home Office", email: "@", password: "q", currentCourse: "iOS Basic", completedCourses: ["Basic Programming", "JS Basic", "HTML/CSS"])
 	}
@@ -218,37 +218,21 @@ extension SignInController {
 
 //MARK: - Design Views Extension
 extension SignInController {
-	func designView() {
 
-		// set the titleView shadow properties
-		logoView.layer.shadowColor = UIColor.black.cgColor
-		logoView.layer.shadowOffset = CGSize(width: 2, height: 2)
-		logoView.layer.shadowOpacity = 1
-		logoView.layer.shadowRadius = 25
+	//MARK: - Design UI
+	func designUI(view: UIView) {
 
-		// set the titleView corner radius
-		logoView.layer.cornerRadius = 7
+		//MARK: - set view properties
+		view.clipsToBounds = true
+		view.layer.masksToBounds = false
 
-		// set the shadowCollectionView shadow properties
-		signInView.layer.shadowColor = UIColor.black.cgColor
-		signInView.layer.shadowOffset = CGSize(width: 2, height: 2)
-		signInView.layer.shadowOpacity = 1
-		signInView.layer.shadowRadius = 25
+		//MARK: - set view shadow
+		view.layer.shadowColor = UIColor.black.cgColor
+		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
+		view.layer.shadowOpacity = 0.9
+		view.layer.shadowRadius = 3
 
-		// set the round view for image
-		signInView.clipsToBounds = true
-		signInView.layer.masksToBounds = false
-
-		// set the shadowCollectionView corner radius
-		signInView.layer.cornerRadius = 7
-
-		// set the titleView shadow properties
-		signInButtonView.layer.shadowColor = UIColor.black.cgColor
-		signInButtonView.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-		signInButtonView.layer.shadowOpacity = 0.7
-		signInButtonView.layer.shadowRadius = 3
-
-		// set the titleView corner radius
-		signInButtonView.layer.cornerRadius = 7
+		//MARK: - set view corner radius
+		view.layer.cornerRadius = 7
 	}
 }
