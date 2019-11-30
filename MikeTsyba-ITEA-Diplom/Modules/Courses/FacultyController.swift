@@ -22,6 +22,10 @@ class FacultyController: UIViewController {
 	@IBOutlet weak var profileButtonView: UIView!
 
 	//MARK: - Custom variables
+	var newAllCatehdrals = [NewCatehdral]()
+	var newAllFaculties = [NewFaculty]()
+	var newAllCourses = [NewCourse]()
+
 	//input data
 	var timeFilterFacultyValues = [String]()
 	var typeFilterFacultyValues = [String]()

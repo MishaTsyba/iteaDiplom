@@ -1052,8 +1052,8 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Take &lt;this&gt; Course" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Q2z-wa-STv">
-                                        <rect key="frame" x="96" y="5" width="223" height="70"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                        <rect key="frame" x="96" y="5" width="231" height="70"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1064,7 +1064,7 @@
                                     <constraint firstAttribute="height" constant="80" id="Uoz-WE-Try"/>
                                     <constraint firstItem="5fl-E0-UB9" firstAttribute="top" secondItem="tGe-98-xTz" secondAttribute="top" constant="20" id="aMw-oz-hiW"/>
                                     <constraint firstItem="Q2z-wa-STv" firstAttribute="top" secondItem="tGe-98-xTz" secondAttribute="top" constant="5" id="ewm-zc-6wG"/>
-                                    <constraint firstAttribute="trailing" secondItem="Q2z-wa-STv" secondAttribute="trailing" constant="24" id="fg6-Mr-n03"/>
+                                    <constraint firstAttribute="trailing" secondItem="Q2z-wa-STv" secondAttribute="trailing" constant="16" id="fg6-Mr-n03"/>
                                     <constraint firstAttribute="bottom" secondItem="5fl-E0-UB9" secondAttribute="bottom" constant="20" id="gbY-M3-c5g"/>
                                     <constraint firstItem="Q2z-wa-STv" firstAttribute="leading" secondItem="5fl-E0-UB9" secondAttribute="trailing" constant="8" id="lsT-vp-wbT"/>
                                     <constraint firstItem="5fl-E0-UB9" firstAttribute="leading" secondItem="tGe-98-xTz" secondAttribute="leading" constant="8" id="zxn-Ap-rml"/>

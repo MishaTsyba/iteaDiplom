@@ -69,6 +69,14 @@ class CourseOrderController: UIViewController {
 		commentsTextView.delegate = self
 
 		setDefaultStudentValues()
+
+		if let item = course {
+			if let courseName = item.name {
+				let motto = "Take " + courseName + "!"
+				titleLabel.text = motto
+				buyButton.setTitle(motto, for: .normal)
+			}
+		}
     }
 
 	//MARK: - viewWillAppear
