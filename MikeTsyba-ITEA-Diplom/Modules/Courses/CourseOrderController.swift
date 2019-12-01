@@ -98,30 +98,22 @@ class CourseOrderController: UIViewController {
 	//MARK: - Back Button Actions
 	@IBAction func didTapBackButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
-		let viewControllersOfNavigation = navigationController?.viewControllers
-
-		if let controllers = viewControllersOfNavigation {
-			if let courseController = controllers[3] as? CourseController {
-				navigationController?.popToViewController(courseController, animated: false)
-			}
-		}
+		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
+		let courseController = coursesStoryboard.instantiateViewController(withIdentifier: "CourseController") as! CourseController
+		courseController.signedInStudent = self.signedInStudent
+		courseController.course = self.course
+		navigationController?.pushViewController(courseController, animated: false)
 	}
 
 	//MARK: - Buy Button Actions
 	@IBAction func didTapBuyButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
 		if privacyValid {
-			let viewControllersOfNavigation = navigationController?.viewControllers
-
-			if let controllers = viewControllersOfNavigation {
-
-				if let facultyController = controllers[1] as? FacultyController {
-
-					facultyController.signedInStudent = self.signedInStudent
-					facultyController.course = self.course
-					navigationController?.popToViewController(facultyController, animated: false)
-				}
-			}
+			let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
+			let facultyController = coursesStoryboard.instantiateViewController(withIdentifier: "FacultyController") as! FacultyController
+			facultyController.signedInStudent = self.signedInStudent
+			navigationController?.pushViewController(facultyController, animated: false)
+			
 		} else {
 			validationAlert(title: "Wanna Be R' Student ???", message: "You must conform to PPP - our nice Privacy Policy Protocol !!!", actionTitle: "Force Unwrap Now!")
 		}

@@ -78,6 +78,7 @@ class FilterController: UIViewController {
 	//MARK: - Custom variables
 	//input data
 	var newAllCatehdrals = [NewCatehdral]()
+	var signedInStudent: Student?
 
 	//init data
 	let name = Name()
@@ -259,23 +260,14 @@ class FilterController: UIViewController {
 	//MARK: - Back Button Actions
 	@IBAction func didTapBackButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
-		let viewControllersOfNavigation = navigationController?.viewControllers
-
-		if let controllers = viewControllersOfNavigation {
-
-			if let facultyController = controllers[1] as? FacultyController {
-				facultyController.timeFilterFacultyValues = self.timeFilterFacultyValues
-				facultyController.typeFilterFacultyValues = self.typeFilterFacultyValues
-				facultyController.savedTimeFilterFacultyValues = self.savedTimeFilterFacultyValues
-				facultyController.savedTypeFilterFacultyValues = self.savedTypeFilterFacultyValues
-				
-				debugPrint("timeFilterFacultyValues: \(timeFilterFacultyValues)")
-				debugPrint("typeFilterFacultyValues: \(typeFilterFacultyValues)")
-				debugPrint("savedTimeFilterFacultyValues: \(savedTimeFilterFacultyValues)")
-				debugPrint("savedTypeFilterFacultyValues: \(savedTypeFilterFacultyValues)")
-				navigationController?.popToViewController(facultyController, animated: false)
-			}
-		}
+		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
+		let facultyController = coursesStoryboard.instantiateViewController(withIdentifier: "FacultyController") as! FacultyController
+		facultyController.signedInStudent = self.signedInStudent
+		facultyController.timeFilterFacultyValues = self.timeFilterFacultyValues
+		facultyController.typeFilterFacultyValues = self.typeFilterFacultyValues
+		facultyController.savedTimeFilterFacultyValues = self.savedTimeFilterFacultyValues
+		facultyController.savedTypeFilterFacultyValues = self.savedTypeFilterFacultyValues
+		navigationController?.pushViewController(facultyController, animated: false)
 	}
 	
 	//MARK: - Save Button Actions

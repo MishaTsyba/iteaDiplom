@@ -105,15 +105,11 @@ class StudentController: UIViewController {
 
 	//MARK: - Back Button Actions
 	@IBAction func didTapBackButton(_ sender: Any) {
-		let viewControllersOfNavigation = navigationController?.viewControllers
+		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
+		let facultyController = coursesStoryboard.instantiateViewController(withIdentifier: "FacultyController") as! FacultyController
 
-		if let controllers = viewControllersOfNavigation {
-			if let facultyController = controllers[1] as? FacultyController {
-
-				facultyController.signedInStudent = self.signedInStudent
-				navigationController?.popToViewController(facultyController, animated: false)
-			}
-		}
+		facultyController.signedInStudent = self.signedInStudent
+		navigationController?.pushViewController(facultyController, animated: false)
 	}
 
 	//MARK: - Edit Button Actions
@@ -132,10 +128,11 @@ class StudentController: UIViewController {
 	@IBAction func didTapLastCoursesButton(_ sender: Any) {
 		let studentStoryboard = UIStoryboard(name: "Student", bundle: nil)
 		let studentCoursesController = studentStoryboard.instantiateViewController(withIdentifier: "StudentCoursesController") as! StudentCoursesController
-
 		studentCoursesController.signedInStudent = self.signedInStudent
 		studentCoursesController.studentCurrentCourses = self.studentCurrentCourses
 		studentCoursesController.studentLastCourses = self.studentLastCourses
+		debugPrint("studentCurrentCourses: \(studentCurrentCourses)")
+		debugPrint("studentLastCourses: \(studentLastCourses)")
 		navigationController?.pushViewController(studentCoursesController, animated: false)
 	}
 }

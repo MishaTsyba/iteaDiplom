@@ -30,6 +30,7 @@ class CourseDetailesController: UIViewController {
 
 	//input data
 	var course: NewCourse?
+	var signedInStudent: Student?
 	
 	//MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -54,13 +55,11 @@ class CourseDetailesController: UIViewController {
 	//MARK: - Back Button Actions
 	@IBAction func didTapBackButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
-		let viewControllersOfNavigation = navigationController?.viewControllers
-
-		if let controllers = viewControllersOfNavigation {
-			if let courseController = controllers[3] as? CourseController {
-				navigationController?.popToViewController(courseController, animated: false)
-			}
-		}
+		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
+		let courseController = coursesStoryboard.instantiateViewController(withIdentifier: "CourseController") as! CourseController
+		courseController.signedInStudent = self.signedInStudent
+		courseController.course = self.course
+		navigationController?.pushViewController(courseController, animated: false)
 	}
 }
 

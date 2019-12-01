@@ -30,7 +30,8 @@ class CourseController: UIViewController {
 	@IBOutlet weak var moreInfoButton: UIButton!
 
 	//MARK: - Custom variables
-
+	var filteredFacultyCourses = [NewCourse]()
+	
 	//transfer data
 	var course: NewCourse?
 	var signedInStudent: Student?
@@ -66,7 +67,7 @@ class CourseController: UIViewController {
 		let courseDetailsController = coursesStoryboard.instantiateViewController(withIdentifier: "CourseDetailesController") as! CourseDetailesController
 
 		courseDetailsController.course = self.course
-
+		courseDetailsController.signedInStudent = self.signedInStudent
 		debugPrint("course: \(String(describing: course))")
 		navigationController?.pushViewController(courseDetailsController, animated: false)
 	}
@@ -75,9 +76,12 @@ class CourseController: UIViewController {
 	@IBAction func didTapBackButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
 		let viewControllersOfNavigation = navigationController?.viewControllers
-
 		if let controllers = viewControllersOfNavigation {
+
 			if let coursesController = controllers[2] as? CoursesController {
+				coursesController.course = self.course
+				coursesController.signedInStudent = self.signedInStudent
+				coursesController.filteredFacultyCourses = self.filteredFacultyCourses
 				navigationController?.popToViewController(coursesController, animated: false)
 			}
 		}

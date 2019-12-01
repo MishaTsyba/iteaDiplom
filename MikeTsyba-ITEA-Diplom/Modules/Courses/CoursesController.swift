@@ -61,8 +61,6 @@ class CoursesController: UIViewController {
 		debugPrint("timeFilterFacultyValues: \(timeFilterFacultyValues)")
 		debugPrint("signedInStudent: \(String(describing: self.signedInStudent))")
 		debugPrint("selectedFaculty: \(String(describing: self.selectedFaculty))")
-		debugPrint("selectedFaculty: \(String(describing: selectedFaculty?.name)))")
-		debugPrint("selectedFaculty: \(String(describing: selectedFaculty?.imageName))")
 		debugPrint("allCourses: \(String(describing: self.newAllCourses))")
 		debugPrint("filteredFacultyCourses: \(String(describing: filteredFacultyCourses))")
 
@@ -82,14 +80,11 @@ class CoursesController: UIViewController {
 	//MARK: - Back Button Actions
 	@IBAction func didTapBackButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
-		let viewControllersOfNavigation = navigationController?.viewControllers
-
-		if let controllers = viewControllersOfNavigation {
-
-			if let facultyController = controllers[1] as? FacultyController {
-				navigationController?.popToViewController(facultyController, animated: false)
-			}
-		}
+		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
+		let facultyController = coursesStoryboard.instantiateViewController(withIdentifier: "FacultyController") as! FacultyController
+		facultyController.signedInStudent = self.signedInStudent
+		facultyController.course = self.course
+		navigationController?.pushViewController(facultyController, animated: false)
 	}
 }
 
@@ -118,7 +113,8 @@ extension CoursesController: UITableViewDelegate, UITableViewDataSource {
 
 		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
 		let courseController = coursesStoryboard.instantiateViewController(withIdentifier: "CourseController") as! CourseController
-
+		
+		courseController.filteredFacultyCourses = self.filteredFacultyCourses
 		courseController.course = filteredFacultyCourses[indexPath.row]
 		courseController.signedInStudent = self.signedInStudent
 

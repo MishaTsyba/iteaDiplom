@@ -100,7 +100,7 @@ class FacultyController: UIViewController {
 		let filterController = coursesStoryboard.instantiateViewController(withIdentifier: "FilterController") as! FilterController
 
 		filterController.newAllCatehdrals = self.newAllCatehdrals
-
+		filterController.signedInStudent = self.signedInStudent
 		filterController.timeFilterFacultyValues = self.timeFilterFacultyValues
 		filterController.typeFilterFacultyValues = self.typeFilterFacultyValues
 		filterController.savedTimeFilterFacultyValues = self.savedTimeFilterFacultyValues
