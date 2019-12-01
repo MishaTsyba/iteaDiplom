@@ -19,10 +19,10 @@ class Student {
 	var email: String?
 	var password: String?
 	var imageName: String?
-	var currentCourse: String?
-	var completedCourses: [String]?
+	var currentCourses: [String]?
+	var lastCourses: [String]?
 
-	init(firstName: String?, lastName: String?, age: String?, city: String?, birthday: String?, phone: String?, workPlace: String?, email: String?, password: String?, imageName: String?, currentCourse: String?, completedCourses: [String]?) {
+	init(firstName: String?, lastName: String?, age: String?, city: String?, birthday: String?, phone: String?, workPlace: String?, email: String?, password: String?, imageName: String?, currentCourses: [String]?, lastCourses: [String]?) {
 
 		self.firstName = firstName
 		self.lastName = lastName
@@ -34,7 +34,7 @@ class Student {
 		self.email = email
 		self.password = password
 		self.imageName = imageName
-		self.currentCourse = currentCourse
-		self.completedCourses = completedCourses
+		self.currentCourses = currentCourses
+		self.lastCourses = lastCourses
 	}
 }

@@ -52,7 +52,7 @@ class StudentController: UIViewController {
 
 	//MARK: - Custom variables
 	var signedInStudent: Student?
-	var studentCurrentCourse: NewCourse?
+	var studentCurrentCourses = [NewCourse]()
 	var studentLastCourses = [NewCourse]()
 	var editMode = false
 
@@ -68,6 +68,11 @@ class StudentController: UIViewController {
 	//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+
+		debugPrint("*********** Student viewDidLoad  **************")
+		debugPrint("studentCurrentCourses: \(studentCurrentCourses)")
+		debugPrint("studentLastCourses: \(studentLastCourses)")
+
 		designUi()
 		designEditibleTextFields(flag: editMode)
 		textFieldInsetText()
@@ -129,7 +134,7 @@ class StudentController: UIViewController {
 		let studentCoursesController = studentStoryboard.instantiateViewController(withIdentifier: "StudentCoursesController") as! StudentCoursesController
 
 		studentCoursesController.signedInStudent = self.signedInStudent
-		studentCoursesController.studentCurrentCourse = self.studentCurrentCourse
+		studentCoursesController.studentCurrentCourses = self.studentCurrentCourses
 		studentCoursesController.studentLastCourses = self.studentLastCourses
 		navigationController?.pushViewController(studentCoursesController, animated: false)
 	}
@@ -334,7 +339,9 @@ extension StudentController {
 			birthdayTextField.text = student.birthday ?? "no info"
 			emailTextField.text = student.email ?? "no info"
 			phoneTextField.text = student.phone ?? "no info"
-			currentCourseTextField.text = student.currentCourse ?? "no info"
+			if let currentCourses = student.currentCourses {
+				currentCourseTextField.text = currentCourses.first ?? "no info"
+			}
 			workPlaceTextField.text = student.workPlace ?? "no info"
 
 			if let image = student.imageName {

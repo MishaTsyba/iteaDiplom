@@ -45,6 +45,8 @@ class SignInController: UIViewController {
 	var userEmailValid = false
 	var userPasswordValid = false
 
+	let name = Name()
+
 	//output data
 	var signedInStudent: Student?
 
@@ -220,7 +222,7 @@ extension SignInController {
 
 	//MARK: - makeStudent
 	func makeStudent() {
-		signedInStudent = Student(firstName: "Mike", lastName: "Tsyba", age: "41", city: "Kiev", birthday: "09-04-1978", phone: "+380503387901", workPlace: "Home Office", email: "@", password: "q", imageName: "mike", currentCourse: "iOS Basic", completedCourses: ["Basic Programming", "JS Basic", "HTML/CSS"])
+		signedInStudent = Student(firstName: "Mike", lastName: "Tsyba", age: "41", city: "Kiev", birthday: "09-04-1978", phone: "+380503387901", workPlace: "Home Office", email: "@", password: "q", imageName: "mike", currentCourses: [name.iosBasic, name.iosAdvanced], lastCourses: [name.progBasic, name.jsBasic, name.htmlCss])
 	}
 }
 

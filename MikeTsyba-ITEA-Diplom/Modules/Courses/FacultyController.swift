@@ -25,7 +25,7 @@ class FacultyController: UIViewController {
 	var newAllCatehdrals = [NewCatehdral]()
 	var newAllFaculties = [NewFaculty]()
 	var newAllCourses = [NewCourse]()
-	var studentCurrentCourse: NewCourse?
+	var studentCurrentCourses = [NewCourse]()
 	var studentLastCourses = [NewCourse]()
 
 	let name = Name()
@@ -82,11 +82,13 @@ class FacultyController: UIViewController {
 	//MARK: - Profile Button Actions
 	@IBAction func didTapMyProfileButton(_ sender: Any) {
 
+		makeStudentCorses(signedInStudent: signedInStudent, courses: newAllCourses)
+
 		let studentStoryboard = UIStoryboard(name: "Student", bundle: nil)
 		let studentController = studentStoryboard.instantiateViewController(withIdentifier: "StudentController") as! StudentController
 
 		studentController.signedInStudent = self.signedInStudent
-		studentController.studentCurrentCourse = self.studentCurrentCourse
+		studentController.studentCurrentCourses = self.studentCurrentCourses
 		studentController.studentLastCourses = self.studentLastCourses
 		navigationController?.pushViewController(studentController, animated: false)
 	}
@@ -157,6 +159,32 @@ extension FacultyController: UICollectionViewDelegate, UICollectionViewDataSourc
 		coursesController.timeFilterFacultyValues = self.timeFilterFacultyValues
 		debugPrint("timeFilterFacultyValues: \(timeFilterFacultyValues)")
 		navigationController?.pushViewController(coursesController, animated: false)
+	}
+}
+
+//MARK: - Make Student Courses extension
+extension FacultyController {
+
+	func makeStudentCorses(signedInStudent: Student?, courses: [NewCourse]) {
+		if let student = signedInStudent {
+			for course in courses {
+				if let currentStudentCourses = student.currentCourses {
+					for currentCourseName in currentStudentCourses {
+						if currentCourseName == course.name {
+							studentCurrentCourses.append(course)
+						}
+					}
+				}
+
+				if let lastStudentCourses = student.lastCourses {
+					for lastCourseName in lastStudentCourses {
+						if lastCourseName == course.name {
+							studentLastCourses.append(course)
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
