@@ -525,7 +525,7 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="7LC-T9-OLO" firstAttribute="top" secondItem="CSh-vX-qGp" secondAttribute="bottom" constant="10" id="4l6-ZD-h3f"/>
                                                             <constraint firstItem="7LC-T9-OLO" firstAttribute="leading" secondItem="TaY-uz-kyj" secondAttribute="leading" constant="8" id="5vf-xY-kXe"/>
@@ -861,7 +861,7 @@
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="UQC-IP-pfK" firstAttribute="leading" secondItem="9I9-ix-AOg" secondAttribute="leading" constant="8" id="0T9-2t-TzK"/>
                                                             <constraint firstAttribute="trailing" secondItem="Npm-T3-4Yh" secondAttribute="trailing" constant="8" id="0eA-eW-OiC"/>

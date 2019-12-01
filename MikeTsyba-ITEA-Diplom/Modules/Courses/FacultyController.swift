@@ -26,7 +26,7 @@ class FacultyController: UIViewController {
 	var newAllFaculties = [NewFaculty]()
 	var newAllCourses = [NewCourse]()
 	var studentCurrentCourse: NewCourse?
-	var studentCompletedCourses = [NewCourse]()
+	var studentLastCourses = [NewCourse]()
 
 	let name = Name()
 	let time = Time()
@@ -86,7 +86,7 @@ class FacultyController: UIViewController {
 
 		studentController.signedInStudent = self.signedInStudent
 		studentController.studentCurrentCourse = self.studentCurrentCourse
-		studentController.studentCompletedCourses = self.studentCompletedCourses
+		studentController.studentLastCourses = self.studentLastCourses
 		navigationController?.pushViewController(studentController, animated: false)
 	}
 
@@ -173,6 +173,14 @@ extension FacultyController {
 			}
 		}
 		debugPrint("filteredFaculties: \(filteredFaculties.description)")
+	}
+}
+
+//MARK: - Make Filtered Student Courses extension
+extension FacultyController {
+
+	func makeFilteredStudentCourses() {
+		
 	}
 }
 

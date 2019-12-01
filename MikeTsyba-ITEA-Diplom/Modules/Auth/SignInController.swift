@@ -168,9 +168,9 @@ extension SignInController {
 		if let enteredEmailValue = emailTextField.text {
 			//validate EMAIL EMPTY or WITHOUT @
 			if enteredEmailValue.isEmpty {
-				validationAlert(title: "Error", message: "Please enter your Account Email", actionTitle: "Try Again")
+				validationAlert(title: "Error", message: "Please enter Account Email", actionTitle: "Try Again")
 			} else if !enteredEmailValue.contains("@") {
-				validationAlert(title: "Error", message: "Please enter valid email address with @", actionTitle: "Try Again")
+				validationAlert(title: "Error", message: "Please enter valid Account Email with @", actionTitle: "Try Again")
 			} else {
 				emailFormatValid = true
 			}
@@ -182,9 +182,9 @@ extension SignInController {
 		if let enteredPasswordValue = passwordTextField.text {
 			//validate 6 < PASSWORD < 15 or EMPTY
 			if enteredPasswordValue.isEmpty {
-				validationAlert(title: "Error", message: "Please enter your Account Password", actionTitle: "Try Again")
+				validationAlert(title: "Error", message: "Please enter Account Password", actionTitle: "Try Again")
 			} else if enteredPasswordValue.count < 1 || enteredPasswordValue.count > 15 {
-				validationAlert(title: "Error", message: "Please enter valid password 1 - 15 characters", actionTitle: "Try Again")
+				validationAlert(title: "Error", message: "Please enter valid Account Password 1 - 15 characters", actionTitle: "Try Again")
 			} else {
 				passwordFormatValid = true
 			}
@@ -220,7 +220,7 @@ extension SignInController {
 
 	//MARK: - makeStudent
 	func makeStudent() {
-		signedInStudent = Student(firstName: "Mike", lastName: "Tsyba", age: "41", city: "Kiev", birthday: "09-04-1978", phone: "+380503387901", workPlace: "Home Office", email: "@", password: "q", currentCourse: "iOS Basic", completedCourses: ["Basic Programming", "JS Basic", "HTML/CSS"])
+		signedInStudent = Student(firstName: "Mike", lastName: "Tsyba", age: "41", city: "Kiev", birthday: "09-04-1978", phone: "+380503387901", workPlace: "Home Office", email: "@", password: "q", imageName: "mike", currentCourse: "iOS Basic", completedCourses: ["Basic Programming", "JS Basic", "HTML/CSS"])
 	}
 }
 

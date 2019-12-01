@@ -18,10 +18,11 @@ class Student {
 	var workPlace: String?
 	var email: String?
 	var password: String?
+	var imageName: String?
 	var currentCourse: String?
 	var completedCourses: [String]?
 
-	init(firstName: String?, lastName: String?, age: String?, city: String?, birthday: String?, phone: String?, workPlace: String?, email: String?, password: String?, currentCourse: String?, completedCourses: [String]?) {
+	init(firstName: String?, lastName: String?, age: String?, city: String?, birthday: String?, phone: String?, workPlace: String?, email: String?, password: String?, imageName: String?, currentCourse: String?, completedCourses: [String]?) {
 
 		self.firstName = firstName
 		self.lastName = lastName
@@ -32,6 +33,7 @@ class Student {
 		self.workPlace = workPlace
 		self.email = email
 		self.password = password
+		self.imageName = imageName
 		self.currentCourse = currentCourse
 		self.completedCourses = completedCourses
 	}
