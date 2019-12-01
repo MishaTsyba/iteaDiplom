@@ -350,10 +350,10 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RzI-8c-vfU" userLabel="Student Name View">
-                                                        <rect key="frame" x="112" y="14" width="219" height="88"/>
+                                                        <rect key="frame" x="112" y="14" width="231" height="88"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xz8-Fc-aqI">
-                                                                <rect key="frame" x="12" y="6" width="195" height="36"/>
+                                                                <rect key="frame" x="12" y="6" width="207" height="36"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="9Ib-wQ-exB"/>
                                                                 </constraints>
@@ -361,7 +361,7 @@
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                             <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DSJ-u7-ami">
-                                                                <rect key="frame" x="12" y="48" width="195" height="34"/>
+                                                                <rect key="frame" x="12" y="48" width="207" height="34"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="34" id="7ht-3c-cD4"/>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="BQ0-M5-nLi"/>
@@ -398,7 +398,7 @@
                                                     <constraint firstItem="xX6-ru-WY1" firstAttribute="leading" secondItem="vQ8-Pe-y2H" secondAttribute="leading" id="goL-jN-vaL"/>
                                                     <constraint firstItem="xX6-ru-WY1" firstAttribute="trailing" secondItem="vQ8-Pe-y2H" secondAttribute="trailing" id="izE-FD-ZQr"/>
                                                     <constraint firstAttribute="bottom" secondItem="xX6-ru-WY1" secondAttribute="bottom" constant="15" id="qXo-K5-eD0"/>
-                                                    <constraint firstAttribute="trailing" secondItem="RzI-8c-vfU" secondAttribute="trailing" constant="12" id="uyA-7N-gp7"/>
+                                                    <constraint firstAttribute="trailing" secondItem="RzI-8c-vfU" secondAttribute="trailing" id="uyA-7N-gp7"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -460,6 +460,7 @@
                         <outlet property="nameView" destination="RzI-8c-vfU" id="Opa-F7-313"/>
                         <outlet property="phoneLabel" destination="3FQ-dP-Gmt" id="YuO-aY-sgY"/>
                         <outlet property="phoneTextField" destination="ovj-cL-mmt" id="gfO-CV-MGp"/>
+                        <outlet property="scrollViewSuperViewToSafeAreaBottomConstraint" destination="e4t-S3-YsT" id="TNy-KM-Kjv"/>
                         <outlet property="shadowScrollView" destination="TPx-2k-2GI" id="i7i-kT-6KO"/>
                         <outlet property="studentImageView" destination="F3f-zX-euj" id="CN8-qM-Df9"/>
                         <outlet property="studentLastCoursesButton" destination="xX6-ru-WY1" id="F0w-K0-CZu"/>
@@ -475,6 +476,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qcz-Do-IYR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="426" y="-52"/>
+        </scene>
+        <!--Student Courses Controller-->
+        <scene sceneID="Mx7-Uk-eyV">
+            <objects>
+                <viewController storyboardIdentifier="StudentCoursesController" id="bPs-XR-Mju" customClass="StudentCoursesController" customModule="ITEA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tUw-yB-1cn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cLi-h5-398" userLabel="Back Button View">
+                                <rect key="frame" x="150" y="336" width="80" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqm-3I-BYN">
+                                        <rect key="frame" x="0.0" y="-10" width="80" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="9JI-aQ-vqT"/>
+                                            <constraint firstAttribute="width" constant="80" id="bnn-kU-Xyi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapBackButton:" destination="p4Z-Fk-SX4" eventType="touchUpInside" id="sje-Sd-4Td"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="0.90129841550000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="cqm-3I-BYN" firstAttribute="centerX" secondItem="cLi-h5-398" secondAttribute="centerX" id="Dla-Uz-9X2"/>
+                                    <constraint firstAttribute="height" constant="40" id="G2b-Ur-iZ3"/>
+                                    <constraint firstItem="cqm-3I-BYN" firstAttribute="centerY" secondItem="cLi-h5-398" secondAttribute="centerY" id="SqY-0t-lfA"/>
+                                    <constraint firstAttribute="width" constant="80" id="mdJ-Qg-nnY"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sve-Qu-gx2" firstAttribute="trailing" secondItem="cLi-h5-398" secondAttribute="trailing" constant="145" id="enU-K4-GyQ"/>
+                            <constraint firstItem="cLi-h5-398" firstAttribute="top" secondItem="sve-Qu-gx2" secondAttribute="top" constant="336" id="ge8-G0-8MW"/>
+                            <constraint firstItem="sve-Qu-gx2" firstAttribute="bottom" secondItem="cLi-h5-398" secondAttribute="bottom" constant="291" id="ilM-Dc-dd3"/>
+                            <constraint firstItem="cLi-h5-398" firstAttribute="leading" secondItem="sve-Qu-gx2" secondAttribute="leading" constant="150" id="kP7-dQ-j9P"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sve-Qu-gx2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NWF-E6-5bf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1113" y="-52"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cTW-04-FZp">

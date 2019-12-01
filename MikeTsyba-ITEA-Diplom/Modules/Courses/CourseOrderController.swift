@@ -165,7 +165,7 @@ extension CourseOrderController {
 	}
 }
 
-//MARK: - UITextFieldDelegate Extension
+//MARK: - UITextViewDelegate Extension
 extension CourseOrderController: UITextViewDelegate {
 	func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
 		scrollViewSuperViewToSafeAreaBottomConstraint.constant = 280
@@ -226,7 +226,7 @@ extension CourseOrderController {
 	//validate Full Name FORMAT
 	func validateFullNameFormat() {
 		if let enteredFullNameValue = fullNameTextField.text {
-			//validate EMAIL EMPTY or WITHOUT @
+			//validate EMAIL EMPTY or < 2
 			if enteredFullNameValue.isEmpty {
 				validationAlert(title: "Error", message: "Please enter your Full Name", actionTitle: "Try Again")
 			} else if enteredFullNameValue.count < 2 {
@@ -281,6 +281,7 @@ extension CourseOrderController {
 		present(alertController, animated: true, completion: nil)
 	}
 }
+
 //MARK: - Design UI Extension
 extension CourseOrderController {
 

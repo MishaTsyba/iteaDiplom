@@ -74,6 +74,7 @@ class FacultyController: UIViewController {
 		debugPrint("*********** Faculty viewWillAppear  **************")
 		filteredFaculties = []
 		debugPrint("typeFilterFacultyValues: \(typeFilterFacultyValues)")
+
 		makeFilteredFaculties()
 		facultyCollectionView.reloadData()
     }

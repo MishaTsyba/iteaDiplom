@@ -48,11 +48,22 @@ class StudentController: UIViewController {
 	@IBOutlet weak var studentSignOutButton: UIButton!
 	@IBOutlet weak var studentLastCoursesButton: UIButton!
 
+	@IBOutlet weak var scrollViewSuperViewToSafeAreaBottomConstraint: NSLayoutConstraint!
+
 	//MARK: - Custom variables
 	var signedInStudent: Student?
 	var studentCurrentCourse: NewCourse?
 	var studentLastCourses = [NewCourse]()
 	var editMode = false
+
+	var firstNameFormatValid = false
+	var lastNameFormatValid = false
+	var cityFormatValid = false
+	var birthdayFormatValid = false
+	var workPlaceFormatValid = false
+	var ageFormatValid = false
+	var phoneFormatValid = false
+
 
 	//MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -61,6 +72,17 @@ class StudentController: UIViewController {
 		designEditibleTextFields(flag: editMode)
 		textFieldInsetText()
 		setSignedInStudentUiValues()
+
+		let keyboardHide = UITapGestureRecognizer(target: self, action: #selector(keyboardWillHide))
+		view.addGestureRecognizer(keyboardHide)
+
+		firstNameTextField.delegate = self
+		lastNameTextField.delegate = self
+		ageTextField.delegate = self
+		cityTextField.delegate = self
+		birthdayTextField.delegate = self
+		phoneTextField.delegate = self
+		workPlaceTextField.delegate = self
     }
 
 	//MARK: - viewWillAppear
@@ -82,6 +104,8 @@ class StudentController: UIViewController {
 
 		if let controllers = viewControllersOfNavigation {
 			if let facultyController = controllers[1] as? FacultyController {
+
+				facultyController.signedInStudent = self.signedInStudent
 				navigationController?.popToViewController(facultyController, animated: false)
 			}
 		}
@@ -90,20 +114,203 @@ class StudentController: UIViewController {
 	//MARK: - Edit Button Actions
 	@IBAction func didTapEditButton(_ sender: Any) {
 		editMode = !editMode
-		setEditMode(flag: editMode)
+		setButtonEditMode(flag: editMode)
+		setTextFieldEditMode(flag: editMode)
 		designEditibleTextFields(flag: editMode)
-		if editMode {
-			editButtonView.layer.backgroundColor = UIColor(red: 24/255, green: 53/255, blue: 94/255, alpha: 0.9).cgColor
-			editButton.setTitle("Save", for: .normal)
-		} else {
-			editButtonView.layer.backgroundColor = UIColor(red: 20/255, green: 79/255, blue: 59/255, alpha: 0.9).cgColor
-			editButton.setTitle("Edit", for: .normal)
+
+		if !editMode {
+			keyboardWillHide()
 		}
 	}
 	
 	//MARK: - Last Courses Button Actions
 	@IBAction func didTapLastCoursesButton(_ sender: Any) {
-		debugPrint("didTapLastCoursesButton")
+		let studentStoryboard = UIStoryboard(name: "Student", bundle: nil)
+		let studentCoursesController = studentStoryboard.instantiateViewController(withIdentifier: "StudentCoursesController") as! StudentCoursesController
+
+		studentCoursesController.signedInStudent = self.signedInStudent
+		studentCoursesController.studentCurrentCourse = self.studentCurrentCourse
+		studentCoursesController.studentLastCourses = self.studentLastCourses
+		navigationController?.pushViewController(studentCoursesController, animated: false)
+	}
+}
+
+//MARK: - Validate Input Format Extension
+extension StudentController {
+
+	//validate Name City Birthday WorkPlace FORMAT
+	func validateRecord(textField: UITextField) -> Bool {
+		if let enteredRecordValue = textField.text {
+			//validate Record EMPTY or < 2
+			if enteredRecordValue.isEmpty {
+				validationAlert(title: "Error", message: "Please enter new record", actionTitle: "Try Again")
+				return false
+			} else if enteredRecordValue.count < 2 {
+				validationAlert(title: "Error", message: "New record must be at least 2 characters", actionTitle: "Try Again")
+				return false
+			} else {
+				return true
+			}
+		} else {
+			return false
+		}
+	}
+
+	//validate AGE FORMAT
+	func validateAgeFormat() -> Bool {
+		if let enteredAgeValue = ageTextField.text {
+			let userAge = Int(enteredAgeValue) ?? 18
+			//validate 18 < AGE < 100 or EMPTY
+			if enteredAgeValue.isEmpty || userAge < 18 || userAge > 100 {
+				validationAlert(title: "Error", message: "Please enter valid age 18 +", actionTitle: "Try Again")
+				return false
+			} else {
+				return true
+			}
+		} else {
+			return false
+		}
+	}
+
+	//validate Phone FORMAT
+	func validatePhoneFormat() -> Bool {
+		if let enteredPhoneValue = phoneTextField.text {
+			//validate Phone EMPTY or WITHOUT +
+			if enteredPhoneValue.isEmpty {
+				validationAlert(title: "Error", message: "Please enter your Phone Number", actionTitle: "Try Again")
+				return false
+			} else if !enteredPhoneValue.contains("+") {
+				validationAlert(title: "Error", message: "Please enter valid Phone Number address with +", actionTitle: "Try Again")
+				return false
+			} else {
+				return true
+			}
+		} else {
+			return false
+		}
+	}
+}
+
+//MARK: - keyboardWillHide Extension
+extension StudentController {
+	//hide keyboard
+	@objc func keyboardWillHide() {
+		self.view.endEditing(true)
+		scrollViewSuperViewToSafeAreaBottomConstraint.constant = 20
+		debugPrint("keyboardWillHide")
+	}
+}
+
+//MARK: - UITextFieldDelegate Extension
+extension StudentController: UITextFieldDelegate {
+
+	//lift up ScrollView
+	func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+		scrollViewSuperViewToSafeAreaBottomConstraint.constant = 280
+		debugPrint("ShouldBeginEditing")
+		textField.text = ""
+		return true
+	}
+
+	//validate user data FORMAT input
+	func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+
+		debugPrint("ShouldEndEditing")
+		switch textField {
+		case firstNameTextField:
+			firstNameFormatValid = validateRecord(textField: textField)
+			if firstNameFormatValid {
+				if signedInStudent != nil {
+					signedInStudent!.firstName = textField.text
+				}
+			}
+		case lastNameTextField:
+			lastNameFormatValid = validateRecord(textField: textField)
+			if lastNameFormatValid {
+				if signedInStudent != nil {
+					signedInStudent!.lastName = textField.text
+				}
+			}
+		case ageTextField:
+			ageFormatValid = validateAgeFormat()
+			if ageFormatValid {
+				if signedInStudent != nil {
+					signedInStudent!.age = textField.text
+				}
+			}
+		case cityTextField:
+			cityFormatValid = validateRecord(textField: textField)
+			if cityFormatValid {
+				if signedInStudent != nil {
+					signedInStudent!.city = textField.text
+				}
+			}
+		case birthdayTextField:
+			birthdayFormatValid = validateRecord(textField: textField)
+			if birthdayFormatValid {
+				if signedInStudent != nil {
+					signedInStudent!.birthday = textField.text
+				}
+			}
+		case phoneTextField:
+			phoneFormatValid = validatePhoneFormat()
+			if phoneFormatValid {
+				if signedInStudent != nil {
+					signedInStudent!.phone = textField.text
+				}
+			}
+		case workPlaceTextField:
+			workPlaceFormatValid = validateRecord(textField: textField)
+			if workPlaceFormatValid {
+				if signedInStudent != nil {
+					signedInStudent!.workPlace = textField.text
+				}
+			}
+		default:
+			debugPrint("no fields to validate")
+		}
+		return true
+	}
+
+	//go to NEXT TextField
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+		debugPrint("ShouldReturn")
+		switch textField {
+		case firstNameTextField:
+			lastNameTextField.becomeFirstResponder()
+		case lastNameTextField:
+			lastNameTextField.resignFirstResponder()
+			scrollViewSuperViewToSafeAreaBottomConstraint.constant = 20
+		case ageTextField:
+			cityTextField.becomeFirstResponder()
+		case cityTextField:
+			birthdayTextField.becomeFirstResponder()
+		case birthdayTextField:
+			phoneTextField.becomeFirstResponder()
+		case phoneTextField:
+			workPlaceTextField.becomeFirstResponder()
+		default:
+			workPlaceTextField.resignFirstResponder()
+			scrollViewSuperViewToSafeAreaBottomConstraint.constant = 20
+		}
+		return true
+	}
+}
+
+//MARK: - make Alert extension
+extension StudentController {
+	func validationAlert(title: String, message: String, actionTitle: String) {
+		let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+
+		let actionTryAgain = UIAlertAction(title: actionTitle, style: .default)
+
+		let cancelCancel = UIAlertAction(title: "Cancel", style: .cancel)
+
+		alertController.addAction(actionTryAgain)
+		alertController.addAction(cancelCancel)
+
+		present(alertController, animated: true, completion: nil)
 	}
 }
 
@@ -142,8 +349,23 @@ extension StudentController {
 			}
 		}
 	}
+}
 
-	func setEditMode(flag: Bool) {
+//MARK: - set Edit Mode Extension
+extension StudentController {
+	//MARK: - set Button Edit Mode
+	func setButtonEditMode(flag: Bool) {
+		if editMode {
+			editButtonView.layer.backgroundColor = UIColor(red: 24/255, green: 53/255, blue: 94/255, alpha: 0.9).cgColor
+			editButton.setTitle("Save", for: .normal)
+		} else {
+			editButtonView.layer.backgroundColor = UIColor(red: 20/255, green: 79/255, blue: 59/255, alpha: 0.9).cgColor
+			editButton.setTitle("Edit", for: .normal)
+		}
+	}
+
+	//MARK: - set TextField Edit Mode
+	func setTextFieldEditMode(flag: Bool) {
 		firstNameTextField.isEnabled = flag
 		lastNameTextField.isEnabled = flag
 		ageTextField.isEnabled = flag
@@ -151,33 +373,6 @@ extension StudentController {
 		birthdayTextField.isEnabled = flag
 		phoneTextField.isEnabled = flag
 		workPlaceTextField.isEnabled = flag
-	}
-}
-
-//MARK: - Design UI Extension
-extension StudentController {
-
-	//MARK: - Design UI
-	func designUi() {
-
-		designViews(view: titleView)
-		designViews(view: shadowScrollView)
-		designViews(view: backButtonView)
-		designViews(view: editButtonView)
-		designViews(view: studentSignOutButtonView)
-		designViews(view: studentLastCoursesButton)
-
-		designIcons(view: studentPhotoView)
-		designIcons(view: studentImageView)
-
-		designLabels(view: titleLabel)
-		designLabels(view: ageLabel)
-		designLabels(view: emailLabel)
-		designLabels(view: phoneLabel)
-		designLabels(view: cityLabel)
-		designLabels(view: birthdayLabel)
-		designLabels(view: currentCourseLabel)
-		designLabels(view: workPlaceLabel)
 	}
 
 	func designEditibleTextFields(flag: Bool) {
@@ -221,6 +416,33 @@ extension StudentController {
 		} else {
 			view.layer.backgroundColor = UIColor.clear.cgColor
 		}
+	}
+}
+
+//MARK: - Design UI Extension
+extension StudentController {
+
+	//MARK: - Design UI
+	func designUi() {
+
+		designViews(view: titleView)
+		designViews(view: shadowScrollView)
+		designViews(view: backButtonView)
+		designViews(view: editButtonView)
+		designViews(view: studentSignOutButtonView)
+		designViews(view: studentLastCoursesButton)
+
+		designIcons(view: studentPhotoView)
+		designIcons(view: studentImageView)
+
+		designLabels(view: titleLabel)
+		designLabels(view: ageLabel)
+		designLabels(view: emailLabel)
+		designLabels(view: phoneLabel)
+		designLabels(view: cityLabel)
+		designLabels(view: birthdayLabel)
+		designLabels(view: currentCourseLabel)
+		designLabels(view: workPlaceLabel)
 	}
 
 	func designViews(view: UIView) {
