@@ -56,7 +56,7 @@ class CoursesController: UIViewController {
 	//MARK: - viewWillAppear
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(true)
-		filteredFacultyCourses = []
+		//filteredFacultyCourses = []
 		debugPrint("*********** courses viewWillAppear  **************")
 		debugPrint("timeFilterFacultyValues: \(timeFilterFacultyValues)")
 		debugPrint("signedInStudent: \(String(describing: self.signedInStudent))")
@@ -66,6 +66,7 @@ class CoursesController: UIViewController {
 
 		debugPrint("*********** courses Time Filtering  **************")
 		makeFilteredCourses()
+		debugPrint("filteredFacultyCourses: \(String(describing: filteredFacultyCourses))")
 		if filteredFacultyCourses.count == 0 {
 			noCoursesAlert()
 		}
@@ -115,6 +116,7 @@ extension CoursesController: UITableViewDelegate, UITableViewDataSource {
 		let courseController = coursesStoryboard.instantiateViewController(withIdentifier: "CourseController") as! CourseController
 		
 		courseController.filteredFacultyCourses = self.filteredFacultyCourses
+		courseController.selectedFaculty = self.selectedFaculty
 		courseController.course = filteredFacultyCourses[indexPath.row]
 		courseController.signedInStudent = self.signedInStudent
 
@@ -128,7 +130,12 @@ extension CoursesController: UITableViewDelegate, UITableViewDataSource {
 //MARK: - Filter Courses extension
 extension CoursesController {
 	func makeFilteredCourses() {
-		if let newFaculty = selectedFaculty {
+		debugPrint("selectedFaculty: \(String(describing: selectedFaculty))")
+		if selectedFaculty == nil {
+			if let lastCourse = course {
+				filteredFacultyCourses.append(lastCourse)
+			}
+		} else if let newFaculty = selectedFaculty {
 			if let newCourses = newAllCourses {
 				for newCourse in newCourses {
 					if newCourse.faculty == newFaculty.name {

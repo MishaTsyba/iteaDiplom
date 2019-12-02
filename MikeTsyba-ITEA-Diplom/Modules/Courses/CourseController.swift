@@ -35,11 +35,15 @@ class CourseController: UIViewController {
 	//transfer data
 	var course: NewCourse?
 	var signedInStudent: Student?
+	var selectedFaculty: NewFaculty?
+	var fromLastCourses = false
+	var newAllCourses = [NewCourse]()
 	
 	//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 		debugPrint("*********** Course viewDidLoad  **************")
+		debugPrint("filteredFacultyCourses: \(filteredFacultyCourses))")
 		designViews(view: titleView)
 		designViews(view: buyButtonView)
 		designViews(view: backButtonView)
@@ -50,6 +54,7 @@ class CourseController: UIViewController {
 		designLabels(view: skillsLabel)
 
 		debugPrint("student: \(String(describing: signedInStudent))")
+		debugPrint("fromLastCourses: \(fromLastCourses))")
 
 		if let item = course {
 			titleLabel.text = item.name
@@ -62,12 +67,16 @@ class CourseController: UIViewController {
 
 	//MARK: - MoreInfo Button Actions
 	@IBAction func didTapMoreInfoButton(_ sender: Any) {
+		fromLastCourses = false
 		debugPrint("*********** tap info  **************")
 		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
 		let courseDetailsController = coursesStoryboard.instantiateViewController(withIdentifier: "CourseDetailesController") as! CourseDetailesController
+		courseDetailsController.newAllCourses = self.newAllCourses
 
 		courseDetailsController.course = self.course
 		courseDetailsController.signedInStudent = self.signedInStudent
+		courseDetailsController.selectedFaculty = self.selectedFaculty
+		courseDetailsController.filteredFacultyCourses = self.filteredFacultyCourses
 		debugPrint("course: \(String(describing: course))")
 		navigationController?.pushViewController(courseDetailsController, animated: false)
 	}
@@ -75,16 +84,22 @@ class CourseController: UIViewController {
 	//MARK: - Back Button Actions
 	@IBAction func didTapBackButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
-		let viewControllersOfNavigation = navigationController?.viewControllers
-		if let controllers = viewControllersOfNavigation {
+		debugPrint("*********** fromLastCourses \(fromLastCourses)  **************")
 
-			if let coursesController = controllers[2] as? CoursesController {
-				coursesController.course = self.course
-				coursesController.signedInStudent = self.signedInStudent
-				coursesController.filteredFacultyCourses = self.filteredFacultyCourses
-				navigationController?.popToViewController(coursesController, animated: false)
-			}
-		}
+			let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
+			let coursesController = coursesStoryboard.instantiateViewController(withIdentifier: "CoursesController") as! CoursesController
+
+			coursesController.signedInStudent = self.signedInStudent
+			coursesController.course = self.course
+			coursesController.selectedFaculty = self.selectedFaculty
+			coursesController.filteredFacultyCourses = self.filteredFacultyCourses
+			coursesController.newAllCourses = self.newAllCourses
+
+			debugPrint("signedInStudent: \(String(describing: signedInStudent))")
+			debugPrint("course: \(String(describing: course))")
+			debugPrint("selectedFaculty: \(String(describing: selectedFaculty))")
+
+			navigationController?.pushViewController(coursesController, animated: false)
 	}
 
 	//MARK: - Buy Button Actions
@@ -95,6 +110,9 @@ class CourseController: UIViewController {
 
 		courseOrderController.signedInStudent = self.signedInStudent
 		courseOrderController.course = self.course
+		courseOrderController.selectedFaculty = self.selectedFaculty
+		courseOrderController.filteredFacultyCourses = self.filteredFacultyCourses
+		courseOrderController.newAllCourses = self.newAllCourses
 
 		debugPrint("signedInStudent: \(String(describing: signedInStudent))")
 		debugPrint("course: \(String(describing: course))")

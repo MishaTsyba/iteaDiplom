@@ -90,6 +90,8 @@ class FacultyController: UIViewController {
 		studentController.signedInStudent = self.signedInStudent
 		studentController.studentCurrentCourses = self.studentCurrentCourses
 		studentController.studentLastCourses = self.studentLastCourses
+		studentController.selectedFaculty = self.selectedFaculty
+		studentController.newAllCourses = self.newAllCourses
 		navigationController?.pushViewController(studentController, animated: false)
 	}
 
@@ -99,6 +101,7 @@ class FacultyController: UIViewController {
 		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
 		let filterController = coursesStoryboard.instantiateViewController(withIdentifier: "FilterController") as! FilterController
 
+		filterController.newAllCourses = self.newAllCourses
 		filterController.newAllCatehdrals = self.newAllCatehdrals
 		filterController.signedInStudent = self.signedInStudent
 		filterController.timeFilterFacultyValues = self.timeFilterFacultyValues
@@ -149,6 +152,8 @@ extension FacultyController: UICollectionViewDelegate, UICollectionViewDataSourc
 		} else {
 			coursesController.selectedFaculty = self.filteredFaculties[indexPath.row]
 		}
+
+		coursesController.newAllCourses = self.newAllCourses
 
 		debugPrint("selectedFaculty: \(String(describing: selectedFaculty?.name)))")
 		debugPrint("selectedFaculty: \(String(describing: selectedFaculty?.imageName))")

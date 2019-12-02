@@ -51,6 +51,9 @@ class CourseOrderController: UIViewController {
 	
 	//input displayed processed output
 	var signedInStudent: Student?
+	var selectedFaculty: NewFaculty?
+	var filteredFacultyCourses = [NewCourse]()
+	var newAllCourses = [NewCourse]()
 	
 	//MARK: - viewDidLoad
 
@@ -102,6 +105,9 @@ class CourseOrderController: UIViewController {
 		let courseController = coursesStoryboard.instantiateViewController(withIdentifier: "CourseController") as! CourseController
 		courseController.signedInStudent = self.signedInStudent
 		courseController.course = self.course
+		courseController.selectedFaculty = self.selectedFaculty
+		courseController.newAllCourses = self.newAllCourses
+		courseController.filteredFacultyCourses = self.filteredFacultyCourses
 		navigationController?.pushViewController(courseController, animated: false)
 	}
 

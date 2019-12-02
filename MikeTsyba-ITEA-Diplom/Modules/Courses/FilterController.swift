@@ -79,6 +79,7 @@ class FilterController: UIViewController {
 	//input data
 	var newAllCatehdrals = [NewCatehdral]()
 	var signedInStudent: Student?
+	var newAllCourses = [NewCourse]()
 
 	//init data
 	let name = Name()
@@ -267,6 +268,7 @@ class FilterController: UIViewController {
 		facultyController.typeFilterFacultyValues = self.typeFilterFacultyValues
 		facultyController.savedTimeFilterFacultyValues = self.savedTimeFilterFacultyValues
 		facultyController.savedTypeFilterFacultyValues = self.savedTypeFilterFacultyValues
+		facultyController.newAllCourses = self.newAllCourses
 		navigationController?.pushViewController(facultyController, animated: false)
 	}
 	

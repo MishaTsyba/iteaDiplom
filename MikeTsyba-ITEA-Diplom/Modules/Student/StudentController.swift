@@ -51,10 +51,12 @@ class StudentController: UIViewController {
 	@IBOutlet weak var scrollViewSuperViewToSafeAreaBottomConstraint: NSLayoutConstraint!
 
 	//MARK: - Custom variables
+	var newAllCourses = [NewCourse]()
 	var signedInStudent: Student?
 	var studentCurrentCourses = [NewCourse]()
 	var studentLastCourses = [NewCourse]()
 	var editMode = false
+	var selectedFaculty: NewFaculty?
 
 	var firstNameFormatValid = false
 	var lastNameFormatValid = false
@@ -109,6 +111,8 @@ class StudentController: UIViewController {
 		let facultyController = coursesStoryboard.instantiateViewController(withIdentifier: "FacultyController") as! FacultyController
 
 		facultyController.signedInStudent = self.signedInStudent
+		facultyController.selectedFaculty = self.selectedFaculty
+		facultyController.newAllCourses = self.newAllCourses
 		navigationController?.pushViewController(facultyController, animated: false)
 	}
 
@@ -128,9 +132,11 @@ class StudentController: UIViewController {
 	@IBAction func didTapLastCoursesButton(_ sender: Any) {
 		let studentStoryboard = UIStoryboard(name: "Student", bundle: nil)
 		let studentCoursesController = studentStoryboard.instantiateViewController(withIdentifier: "StudentCoursesController") as! StudentCoursesController
+		studentCoursesController.newAllCourses = self.newAllCourses
 		studentCoursesController.signedInStudent = self.signedInStudent
 		studentCoursesController.studentCurrentCourses = self.studentCurrentCourses
 		studentCoursesController.studentLastCourses = self.studentLastCourses
+		studentCoursesController.selectedFaculty = self.selectedFaculty
 		debugPrint("studentCurrentCourses: \(studentCurrentCourses)")
 		debugPrint("studentLastCourses: \(studentLastCourses)")
 		navigationController?.pushViewController(studentCoursesController, animated: false)

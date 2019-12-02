@@ -31,6 +31,9 @@ class CourseDetailesController: UIViewController {
 	//input data
 	var course: NewCourse?
 	var signedInStudent: Student?
+	var selectedFaculty: NewFaculty?
+	var filteredFacultyCourses = [NewCourse]()
+	var newAllCourses = [NewCourse]()
 	
 	//MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -59,6 +62,9 @@ class CourseDetailesController: UIViewController {
 		let courseController = coursesStoryboard.instantiateViewController(withIdentifier: "CourseController") as! CourseController
 		courseController.signedInStudent = self.signedInStudent
 		courseController.course = self.course
+		courseController.selectedFaculty = self.selectedFaculty
+		courseController.newAllCourses = self.newAllCourses
+		courseController.filteredFacultyCourses = self.filteredFacultyCourses
 		navigationController?.pushViewController(courseController, animated: false)
 	}
 }

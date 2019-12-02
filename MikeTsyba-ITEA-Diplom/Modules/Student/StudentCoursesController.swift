@@ -23,10 +23,12 @@ class StudentCoursesController: UIViewController {
 	@IBOutlet weak var courseTableView: UITableView!
 
 	//MARK: - Custom variables
+	var newAllCourses = [NewCourse]()
 	var signedInStudent: Student?
 	var studentCurrentCourses = [NewCourse]()
 	var studentLastCourses = [NewCourse]()
 	var studentAllCourses = [[NewCourse]]()
+	var selectedFaculty: NewFaculty?
 
 	//output data
 	var course: NewCourse?
@@ -61,9 +63,11 @@ class StudentCoursesController: UIViewController {
 		debugPrint("*********** tap back  **************")
 		let studentStoryboard = UIStoryboard(name: "Student", bundle: nil)
 		let studentController = studentStoryboard.instantiateViewController(withIdentifier: "StudentController") as! StudentController
+		studentController.newAllCourses = self.newAllCourses
 		studentController.signedInStudent = self.signedInStudent
 		studentController.studentCurrentCourses = self.studentCurrentCourses
 		studentController.studentLastCourses = self.studentLastCourses
+		studentController.selectedFaculty = self.selectedFaculty
 		debugPrint("studentCurrentCourses: \(studentCurrentCourses)")
 		debugPrint("studentLastCourses: \(studentLastCourses)")
 		studentCurrentCourses = []
@@ -77,10 +81,51 @@ class StudentCoursesController: UIViewController {
 extension StudentCoursesController: UITableViewDelegate, UITableViewDataSource {
 
 	func numberOfSections(in tableView: UITableView) -> Int {
+		debugPrint("***** numberOfSections studentAllCourses.count: \(studentAllCourses.count)")
 		return studentAllCourses.count
 	}
 
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+		let headerView = UIView(frame: CGRect(x: 10, y: 10, width: tableView.frame.width / 2, height: 40))
+		headerView.layer.backgroundColor = UIColor.clear.cgColor
+
+		let headerLabel = UILabel(frame: headerView.frame)
+		headerLabel.font = UIFont(name:"AvenirNext-DemiBold", size: 18.0)
+		headerLabel.textAlignment = .left
+		headerLabel.layer.backgroundColor = UIColor(red: 255/255, green: 240/255, blue: 210/255, alpha: 0.9).cgColor
+
+		// set the shadow properties
+		headerLabel.layer.shadowColor = UIColor.black.cgColor
+		headerLabel.layer.shadowOffset = CGSize(width: 1, height: 1)
+		headerLabel.layer.shadowOpacity = 1
+		headerLabel.layer.shadowRadius = 4
+
+		// set the corner radius
+		headerLabel.layer.cornerRadius = 7
+
+		switch section {
+		case 0:
+			if studentAllCourses.count > 1 {
+				headerLabel.text = " Current"
+			} else {
+				headerLabel.text = " Completed"
+			}
+		default:
+			headerLabel.text = "  Completed"
+		}
+
+		headerView.addSubview(headerLabel)
+
+		return headerView
+	}
+
+	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 60
+	}
+
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		debugPrint("***** numberOfRowsInSection studentAllCourses[section].count: \(studentAllCourses[section].count)")
 		return studentAllCourses[section].count
 	}
 
@@ -101,7 +146,10 @@ extension StudentCoursesController: UITableViewDelegate, UITableViewDataSource {
 
 		let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
 		let courseController = coursesStoryboard.instantiateViewController(withIdentifier: "CourseController") as! CourseController
-
+		courseController.newAllCourses = self.newAllCourses
+		courseController.selectedFaculty = self.selectedFaculty
+		debugPrint("selectedFaculty: \(String(describing: courseController.selectedFaculty))")
+		courseController.fromLastCourses = true
 		courseController.course = studentAllCourses[indexPath.section][indexPath.row]
 		courseController.signedInStudent = self.signedInStudent
 		debugPrint("course: \(studentAllCourses[indexPath.section][indexPath.row])")
@@ -113,7 +161,6 @@ extension StudentCoursesController: UITableViewDelegate, UITableViewDataSource {
 		studentAllCourses = []
 		navigationController?.pushViewController(courseController, animated: false)
 	}
-
 }
 
 //MARK: - Make table View Sections Data extension
