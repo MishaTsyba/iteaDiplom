@@ -57,7 +57,7 @@ extension FacultyController: UICollectionViewDelegate, UICollectionViewDataSourc
 
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-		let size = CGSize(width: collectionView.frame.width / 2 - 5, height: collectionView.frame.width / 1.8 - 5)
+		let size = CGSize(width: collectionView.frame.width / 2 - 5, height: 160)
 
 		return size
 	}

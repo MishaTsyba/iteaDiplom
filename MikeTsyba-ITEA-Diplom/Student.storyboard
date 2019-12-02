@@ -118,12 +118,12 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="489"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fVt-RV-DpD" userLabel="Sign Out Button View">
-                                                        <rect key="frame" x="8" y="444" width="80" height="30"/>
+                                                        <rect key="frame" x="13" y="444" width="70" height="30"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvx-Zm-Dkr">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="70" height="30"/>
                                                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="13"/>
-                                                                <state key="normal" title="Sign Out">
+                                                                <state key="normal" title="Get Beer!">
                                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <connections>
@@ -133,7 +133,7 @@
                                                         </subviews>
                                                         <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="0.90129841550000001" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="8aJ-9Z-xXL"/>
+                                                            <constraint firstAttribute="width" constant="70" id="8aJ-9Z-xXL"/>
                                                             <constraint firstAttribute="bottom" secondItem="Nvx-Zm-Dkr" secondAttribute="bottom" id="Xnf-ep-bRX"/>
                                                             <constraint firstItem="Nvx-Zm-Dkr" firstAttribute="leading" secondItem="fVt-RV-DpD" secondAttribute="leading" id="YMr-I7-Edf"/>
                                                             <constraint firstAttribute="trailing" secondItem="Nvx-Zm-Dkr" secondAttribute="trailing" id="kro-77-p5K"/>
