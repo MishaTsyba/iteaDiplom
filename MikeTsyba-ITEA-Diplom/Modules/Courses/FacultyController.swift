@@ -54,6 +54,7 @@ class FacultyController: UIViewController {
 		debugPrint("student: \(String(describing: signedInStudent))")
 		setDataModel()
 		designUi()
+		setTitleLabel()
 		facultyCollectionView.register(UINib(nibName: "FacultyCell", bundle: nil), forCellWithReuseIdentifier: "FacultyCell")
 
 		facultyCollectionView.delegate = self

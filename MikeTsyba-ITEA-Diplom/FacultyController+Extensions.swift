@@ -18,7 +18,10 @@ extension FacultyController {
 		designLabels(view: titleLabel)
 	}
 
-	func setTitleLAbel() {
+	func setTitleLabel() {
+		debugPrint("*********** Faculty setTitleLAbel  **************")
+		debugPrint("setTitleLAbel timeFilterFacultyValues: \(timeFilterFacultyValues)")
+		debugPrint("setTitleLAbel savedTimeFilterFacultyValues: \(savedTimeFilterFacultyValues)")
 		if timeFilterFacultyValues.isEmpty && savedTimeFilterFacultyValues.isEmpty {
 			titleLabel.text = "All Courses"
 		}
