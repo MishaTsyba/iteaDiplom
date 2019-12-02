@@ -38,29 +38,18 @@ class CourseController: UIViewController {
 	var selectedFaculty: NewFaculty?
 	var fromLastCourses = false
 	var newAllCourses = [NewCourse]()
+	var studentCurrentCourses = [NewCourse]()
+	var studentLastCourses = [NewCourse]()
 	
 	//MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 		debugPrint("*********** Course viewDidLoad  **************")
 		debugPrint("filteredFacultyCourses: \(filteredFacultyCourses))")
-		designViews(view: titleView)
-		designViews(view: buyButtonView)
-		designViews(view: backButtonView)
-		designViews(view: shadowScrollView)
-		designViews(view: moreInfoButton)
-		designLabels(view: titleLabel)
-		designLabels(view: descriptionLabel)
-		designLabels(view: skillsLabel)
-
 		debugPrint("student: \(String(describing: signedInStudent))")
 		debugPrint("fromLastCourses: \(fromLastCourses))")
-
-		if let item = course {
-			titleLabel.text = item.name
-			descriptionLabel.text = item.description
-			skillsLabel.text = item.skills
-		}
+		designUi()
+		setTitleLAbel()
     }
 
 	//MARK: - viewWillAppear
@@ -85,7 +74,20 @@ class CourseController: UIViewController {
 	@IBAction func didTapBackButton(_ sender: Any) {
 		debugPrint("*********** tap back  **************")
 		debugPrint("*********** fromLastCourses \(fromLastCourses)  **************")
+		if fromLastCourses {
+			let studentStoryboard = UIStoryboard(name: "Student", bundle: nil)
+			let studentCoursesController = studentStoryboard.instantiateViewController(withIdentifier: "StudentCoursesController") as! StudentCoursesController
 
+			studentCoursesController.newAllCourses = self.newAllCourses
+			studentCoursesController.signedInStudent = self.signedInStudent
+			studentCoursesController.studentCurrentCourses = self.studentCurrentCourses
+			studentCoursesController.studentLastCourses = self.studentLastCourses
+			studentCoursesController.selectedFaculty = self.selectedFaculty
+			fromLastCourses = !fromLastCourses
+			debugPrint("studentCurrentCourses: \(studentCurrentCourses)")
+			debugPrint("studentLastCourses: \(studentLastCourses)")
+			navigationController?.pushViewController(studentCoursesController, animated: false)
+		} else {
 			let coursesStoryboard = UIStoryboard(name: "Courses", bundle: nil)
 			let coursesController = coursesStoryboard.instantiateViewController(withIdentifier: "CoursesController") as! CoursesController
 
@@ -100,6 +102,7 @@ class CourseController: UIViewController {
 			debugPrint("selectedFaculty: \(String(describing: selectedFaculty))")
 
 			navigationController?.pushViewController(coursesController, animated: false)
+		}
 	}
 
 	//MARK: - Buy Button Actions
@@ -117,60 +120,5 @@ class CourseController: UIViewController {
 		debugPrint("signedInStudent: \(String(describing: signedInStudent))")
 		debugPrint("course: \(String(describing: course))")
 		navigationController?.pushViewController(courseOrderController, animated: false)
-	}
-}
-
-//MARK: - Design UI Extension
-extension CourseController {
-
-	//MARK: - Design UI
-	func designViews(view: UIView) {
-
-		//MARK: - set view properties
-		view.clipsToBounds = true
-		view.layer.masksToBounds = false
-
-		//MARK: - set view shadow
-		view.layer.shadowColor = UIColor.black.cgColor
-		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
-		view.layer.shadowOpacity = 0.9
-		view.layer.shadowRadius = 3
-
-		//MARK: - set view corner radius
-		view.layer.cornerRadius = 7
-	}
-
-	//MARK: - Design Labels
-	func designLabels(view: UIView) {
-
-		//MARK: - set view properties
-		view.clipsToBounds = true
-		view.layer.masksToBounds = false
-
-		//MARK: - set view shadow
-		view.layer.shadowColor = UIColor.black.cgColor
-		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
-		view.layer.shadowOpacity = 0.7
-		view.layer.shadowRadius = 0.5
-
-		//MARK: - set view corner radius
-		view.layer.cornerRadius = 0
-	}
-
-	//MARK: - Design Icons
-	func designIcons(view: UIView) {
-
-		//MARK: - set view properties
-		view.clipsToBounds = true
-		view.layer.masksToBounds = false
-
-		//MARK: - set view shadow
-		view.layer.shadowColor = UIColor.black.cgColor
-		view.layer.shadowOffset = CGSize(width: 0.7, height: 0.7)
-		view.layer.shadowOpacity = 0.4
-		view.layer.shadowRadius = 0.5
-
-		//MARK: - set view corner radius
-		view.layer.cornerRadius = 7
 	}
 }
