@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CourseCell" rowHeight="100" id="KGk-i7-Jjw" customClass="CourseCell" customModule="ITEA" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JN-kP-wPE" userLabel="Shadow View">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tVK-uK-aMq" userLabel="Base Content View">
+                                <rect key="frame" x="6" y="6" width="308" height="68"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;course name&gt;" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KB-Fc-65S">
+                                        <rect key="frame" x="12" y="12" width="284" height="44"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.93158648519999998" blue="0.82233560809999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="32Z-CN-4m8"/>
+                                    <constraint firstAttribute="trailing" secondItem="4KB-Fc-65S" secondAttribute="trailing" constant="12" id="Het-Zl-Wz3"/>
+                                    <constraint firstAttribute="bottom" secondItem="4KB-Fc-65S" secondAttribute="bottom" constant="12" id="J40-fe-OMA"/>
+                                    <constraint firstItem="4KB-Fc-65S" firstAttribute="top" secondItem="tVK-uK-aMq" secondAttribute="top" constant="12" id="VD5-dO-qOZ"/>
+                                    <constraint firstItem="4KB-Fc-65S" firstAttribute="leading" secondItem="tVK-uK-aMq" secondAttribute="leading" constant="12" id="gfC-AS-6L0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tVK-uK-aMq" firstAttribute="top" secondItem="9JN-kP-wPE" secondAttribute="top" constant="6" id="8wk-AO-Okb"/>
+                            <constraint firstAttribute="trailing" secondItem="tVK-uK-aMq" secondAttribute="trailing" constant="6" id="EVO-sG-ZIv"/>
+                            <constraint firstItem="tVK-uK-aMq" firstAttribute="leading" secondItem="9JN-kP-wPE" secondAttribute="leading" constant="6" id="R6r-Q3-YTP"/>
+                            <constraint firstAttribute="bottom" secondItem="tVK-uK-aMq" secondAttribute="bottom" constant="6" id="afz-YH-snu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="9JN-kP-wPE" secondAttribute="bottom" id="f8M-Ff-B96"/>
+                    <constraint firstItem="9JN-kP-wPE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="gDd-aq-RVM"/>
+                    <constraint firstAttribute="trailing" secondItem="9JN-kP-wPE" secondAttribute="trailing" id="u74-cp-olf"/>
+                    <constraint firstItem="9JN-kP-wPE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="yaW-Gj-jza"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="baseContentView" destination="tVK-uK-aMq" id="CFE-Dt-1kj"/>
+                <outlet property="courseLabel" destination="4KB-Fc-65S" id="553-Tc-pNt"/>
+                <outlet property="shadowView" destination="9JN-kP-wPE" id="tJW-Wu-Fvw"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="161.38392857142856"/>
+        </tableViewCell>
+    </objects>
+</document>
