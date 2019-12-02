@@ -337,17 +337,17 @@
                                                         <rect key="frame" x="8" y="8" width="100" height="100"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F3f-zX-euj" userLabel="Student Image View">
-                                                                <rect key="frame" x="5" y="5" width="90" height="90"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="F3f-zX-euj" secondAttribute="trailing" constant="5" id="9WQ-fh-izl"/>
-                                                            <constraint firstAttribute="bottom" secondItem="F3f-zX-euj" secondAttribute="bottom" constant="5" id="CJ1-ae-kcH"/>
+                                                            <constraint firstItem="F3f-zX-euj" firstAttribute="leading" secondItem="CzU-b9-r8n" secondAttribute="leading" id="02Q-36-9JU"/>
+                                                            <constraint firstAttribute="trailing" secondItem="F3f-zX-euj" secondAttribute="trailing" id="51p-UN-uBd"/>
+                                                            <constraint firstAttribute="bottom" secondItem="F3f-zX-euj" secondAttribute="bottom" id="O5U-W2-3C5"/>
+                                                            <constraint firstItem="F3f-zX-euj" firstAttribute="top" secondItem="CzU-b9-r8n" secondAttribute="top" id="cga-eo-DUP"/>
                                                             <constraint firstAttribute="width" constant="100" id="e8o-px-eDT"/>
                                                             <constraint firstAttribute="height" constant="100" id="qS7-0D-vXJ"/>
-                                                            <constraint firstItem="F3f-zX-euj" firstAttribute="top" secondItem="CzU-b9-r8n" secondAttribute="top" constant="5" id="rgT-n0-hGf"/>
-                                                            <constraint firstItem="F3f-zX-euj" firstAttribute="leading" secondItem="CzU-b9-r8n" secondAttribute="leading" constant="5" id="xlU-Kc-kmM"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RzI-8c-vfU" userLabel="Student Name View">

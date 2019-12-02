@@ -307,8 +307,8 @@ extension StudentController {
 		designViews(view: studentSignOutButtonView)
 		designViews(view: studentLastCoursesButton)
 
-		designIcons(view: studentPhotoView)
-		designIcons(view: studentImageView)
+		designViews(view: studentPhotoView)
+		designViews(view: studentImageView)
 
 		designLabels(view: titleLabel)
 		designLabels(view: ageLabel)
