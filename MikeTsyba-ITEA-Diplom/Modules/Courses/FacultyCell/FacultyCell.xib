@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FacultyCell" id="gTV-IL-0wX" customClass="FacultyCell" customModule="MikeTsyba_ITEA_Diplom" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FacultyCell" id="gTV-IL-0wX" customClass="FacultyCell" customModule="ITEA" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="124" height="144"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -29,7 +29,7 @@
                                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="liR-9L-axk" userLabel="Cell Photo View">
                                                 <rect key="frame" x="9" y="8" width="82" height="82"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iOScountur" translatesAutoresizingMaskIntoConstraints="NO" id="L9p-Xa-IAU" userLabel="Photo Image View">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L9p-Xa-IAU" userLabel="Photo Image View">
                                                         <rect key="frame" x="3" y="3" width="76" height="76"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </imageView>
@@ -104,7 +104,4 @@
             <point key="canvasLocation" x="140.57971014492756" y="139.95535714285714"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="iOScountur" width="170" height="170"/>
-    </resources>
 </document>

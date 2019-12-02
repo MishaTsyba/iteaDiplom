@@ -28,13 +28,14 @@ extension StudentCoursesController: UITableViewDelegate, UITableViewDataSource {
 
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
-		let headerView = UIView(frame: CGRect(x: 10, y: 10, width: tableView.frame.width / 2, height: 40))
+		let headerView = UIView(frame: CGRect(x: 5, y: 5, width: tableView.frame.width / 2.5, height: 40))
 		headerView.layer.backgroundColor = UIColor.clear.cgColor
 
 		let headerLabel = UILabel(frame: headerView.frame)
 		headerLabel.font = UIFont(name:"AvenirNext-DemiBold", size: 18.0)
 		headerLabel.textAlignment = .left
-		headerLabel.layer.backgroundColor = UIColor(red: 20/255, green: 79/255, blue: 59/255, alpha: 0.8).cgColor
+		headerLabel.textColor = .white
+		headerLabel.layer.backgroundColor = UIColor(red: 25/255, green: 100/255, blue: 65/255, alpha: 0.8).cgColor
 
 		// set the shadow properties
 		headerLabel.layer.shadowColor = UIColor.black.cgColor
@@ -61,8 +62,20 @@ extension StudentCoursesController: UITableViewDelegate, UITableViewDataSource {
 		return headerView
 	}
 
+	func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+
+		let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 20))
+		footerView.layer.backgroundColor = UIColor.clear.cgColor
+
+		return footerView
+	}
+
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return 60
+	}
+
+	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+		return 20
 	}
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
