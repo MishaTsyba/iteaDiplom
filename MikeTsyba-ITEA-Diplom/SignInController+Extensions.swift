@@ -147,7 +147,7 @@ extension SignInController {
 
 	//MARK: - makeStudent
 	func makeStudent() {
-		signedInStudent = Student(firstName: "Mike", lastName: "Tsyba", age: "41", city: "Kiev", birthday: "09-04-1978", phone: "+380503387901", workPlace: "Home Office", email: "@", password: "q", imageName: "mike", currentCourses: [name.iosBasic, name.iosAdvanced], lastCourses: [name.progBasic, name.jsBasic, name.htmlCss])
+		signedInStudent = Student(firstName: "Mike", lastName: "--", age: "18", city: "Kiev", birthday: "--", phone: "+", workPlace: "Home Office", email: "@", password: "q", imageName: "mikeLI", currentCourses: [name.iosBasic, name.iosAdvanced], lastCourses: [name.progBasic, name.jsBasic, name.htmlCss])
 	}
 }
 
