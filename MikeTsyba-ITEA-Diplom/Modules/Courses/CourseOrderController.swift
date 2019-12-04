@@ -107,10 +107,9 @@ class CourseOrderController: UIViewController {
 	@IBAction func didTapConfirmPrivacyButton(_ sender: Any) {
 		privacyValid = !privacyValid
 		if !privacyValid {
-			commentsTextView.text = "your comments ..."
 			privacyImageView.image = UIImage(named: name.privacyOff)
 		} else {
-			commentsTextView.text = "You can post your comments now  ... on ebanoe.it !!!"
+			
 			privacyImageView.image = UIImage(named: name.privacyOn)
 		}
 	}
